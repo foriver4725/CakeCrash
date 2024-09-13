@@ -101,50 +101,44 @@ namespace Manager.Main
         /// <summary>
         /// しゃがめるか
         /// </summary>
-        internal bool IsSquattable
-            => !state.IsSquatting && true && !state.IsBeingHitted
-            && !state.IsBeingCleared && !state.IsBeingOvered;
+        internal bool IsSquattable =>
+            !state.IsSquatting && !state.IsBeingHitted && !state.IsBeingCleared && !state.IsBeingOvered;
 
         /// <summary>
         /// 立ち上がれるか
         /// </summary>
         internal bool IsStandUppable =>
-            true && !state.IsOnStandUp && !state.IsBeingHitted
-            && !state.IsBeingCleared && !state.IsBeingOvered;
+             !state.IsOnStandUp && !state.IsBeingHitted && !state.IsBeingCleared && !state.IsBeingOvered;
 
         /// <summary>
         /// ハンマーを振れるか
         /// </summary>
         internal bool IsSmashable =>
-            !state.IsSquatting && true && !state.IsBeingHitted
-            && !state.IsBeingCleared && !state.IsBeingOvered;
+            !state.IsSquatting && !state.IsBeingHitted && !state.IsBeingCleared && !state.IsBeingOvered;
 
         /// <summary>
         /// 流れて行ってしまったケーキが、計上され得るか
         /// </summary>
         internal bool IsMissedCakeCountable =>
-            !state.IsSquatting && !state.IsOnStandUp && !state.IsBeingHitted
-            && !state.IsBeingCleared && !state.IsBeingOvered;
+            !state.IsSquatting && !state.IsOnStandUp && !state.IsBeingHitted && !state.IsBeingCleared
+            && !state.IsBeingOvered;
 
         /// <summary>
         /// 警備員が来る時間のカウントを、進められ得るか
         /// </summary>
         internal bool IsNewGuardManVisittable =>
-            true && true && !state.IsBeingHitted
-            && !state.IsBeingCleared && !state.IsBeingOvered;
+             !state.IsBeingHitted && !state.IsBeingCleared && !state.IsBeingOvered;
 
         /// <summary>
         /// クリアになれるか
         /// </summary>
         internal bool IsBeingClearable =>
-            true && true && true
-            && !state.IsBeingCleared && !state.IsBeingOvered;
+             !state.IsBeingCleared && !state.IsBeingOvered;
 
         /// <summary>
         /// ゲームオーバーになれるか
         /// </summary>
-        internal bool IsBeingOverable
-            => !state.IsSquatting && true && true
-            && !state.IsBeingCleared && !state.IsBeingOvered;
+        internal bool IsBeingOverable =>
+            !state.IsSquatting && !state.IsBeingCleared && !state.IsBeingOvered;
     }
 }
