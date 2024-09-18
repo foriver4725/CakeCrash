@@ -271,15 +271,11 @@ namespace IA
 
         #endregion
 
-        public InputInfo Main_Click { get; private set; }
-        public InputInfo Main_Hold { get; private set; }
-        public InputInfo Main_Value2 { get; private set; }
+        public InputInfo Main_SquatValue0 { get; private set; }
 
         private void Init()
         {
-            Main_Click = new InputInfo(ia.Main.Click, InputType.Click).Add(inputInfoList);
-            Main_Hold = new InputInfo(ia.Main.Hold, InputType.Hold).Add(inputInfoList);
-            Main_Value2 = new InputInfo(ia.Main.Value, InputType.Value2).Add(inputInfoList);
+            Main_SquatValue0 = new InputInfo(ia.Main.Squat, InputType.Value0).Add(inputInfoList);
         }
     }
 }

@@ -6,64 +6,24 @@
             "id": "51c4f880-bedc-405a-93a3-99f1630834e3",
             "actions": [
                 {
-                    "name": "Click",
+                    "name": "Squat",
                     "type": "Button",
-                    "id": "d5187f13-4809-48e8-bbb4-6d9895f7be0c",
+                    "id": "de02742e-9708-4d48-ba90-efb1bae92ab2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Hold",
-                    "type": "Button",
-                    "id": "24352949-3e63-4582-b9ec-542ca14f1248",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Value",
-                    "type": "Value",
-                    "id": "2e5ec744-752b-4e97-bc73-5f7c22486a69",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "0161d87b-0ad0-4a06-b8c7-becbe1262416",
-                    "path": "",
+                    "id": "b5a57ac4-b97d-41be-8516-4ba5adc18439",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cd0e9311-6504-449d-a769-9146a22f13dc",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hold",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "74dd268c-4b5f-4488-9b7d-1efc6566677d",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Value",
+                    "action": "Squat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
