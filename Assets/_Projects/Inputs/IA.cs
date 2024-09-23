@@ -30,6 +30,33 @@ namespace IA
             ""id"": ""51c4f880-bedc-405a-93a3-99f1630834e3"",
             ""actions"": [
                 {
+                    ""name"": ""Red"",
+                    ""type"": ""Button"",
+                    ""id"": ""7f548bda-36dc-4d2a-8b92-3a9611bc6103"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Blue"",
+                    ""type"": ""Button"",
+                    ""id"": ""28a1030b-37fe-4708-bc2b-8cd3c3b4dab1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Green"",
+                    ""type"": ""Button"",
+                    ""id"": ""26461369-faa6-40c5-bb5b-d26365bf982e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Squat"",
                     ""type"": ""Button"",
                     ""id"": ""de02742e-9708-4d48-ba90-efb1bae92ab2"",
@@ -42,6 +69,39 @@ namespace IA
             ""bindings"": [
                 {
                     ""name"": """",
+                    ""id"": ""9863736e-398d-44d0-acdd-eafb7be2f40f"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Red"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f811be0c-1647-4f12-8335-bdba12ec8bff"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Blue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb912e48-ad32-42bb-b80b-9b60d2217e67"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Green"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b5a57ac4-b97d-41be-8516-4ba5adc18439"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -52,13 +112,188 @@ namespace IA
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Shortcut"",
+            ""id"": ""9548a213-a09c-40dd-bb07-fc2570951b8f"",
+            ""actions"": [
+                {
+                    ""name"": ""LoadTitleScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""600bc70b-a459-49ee-ac2f-832c6da5a04a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LoadConfigSceneInTitleScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""058bc536-2e5b-4e0c-b48f-1622934941e6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TriggerScreenSize"",
+                    ""type"": ""Button"",
+                    ""id"": ""64cf0b9d-a363-483f-8882-b64bbb3e4dc2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Two Modifiers"",
+                    ""id"": ""c2696b2c-3c79-497e-9bd6-ef915aa12cbf"",
+                    ""path"": ""TwoModifiers"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LoadTitleScene"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier1"",
+                    ""id"": ""47eb3978-8b81-4829-8edb-9013c9fe7eaf"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LoadTitleScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier2"",
+                    ""id"": ""82b22d65-c6c2-43e2-8cca-9da1b16957a4"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LoadTitleScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""1a81e99b-0c5b-4a56-baee-75bdbca41c11"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LoadTitleScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Two Modifiers"",
+                    ""id"": ""12ed67ee-350e-4638-a74a-98b046224adb"",
+                    ""path"": ""TwoModifiers"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LoadConfigSceneInTitleScene"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier1"",
+                    ""id"": ""dcc8fd03-91af-4e86-85e2-989104a64fee"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LoadConfigSceneInTitleScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier2"",
+                    ""id"": ""5195a9a0-23cf-486f-b630-912fe8c8f8bb"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LoadConfigSceneInTitleScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""8693db55-6ffd-43f4-b003-9ae9c49f4a2f"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LoadConfigSceneInTitleScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Two Modifiers"",
+                    ""id"": ""8cc7ee0d-7ccb-4415-988e-d40f9435dfce"",
+                    ""path"": ""TwoModifiers"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerScreenSize"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier1"",
+                    ""id"": ""b030ec66-f313-4dfa-a8e4-15cf91161a5f"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerScreenSize"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier2"",
+                    ""id"": ""9d577146-6a7d-4a95-8275-d17ffe771c20"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerScreenSize"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""e8c428d5-4d9f-46a6-ac4e-02e120d5ac59"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerScreenSize"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
             // Main
             m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
+            m_Main_Red = m_Main.FindAction("Red", throwIfNotFound: true);
+            m_Main_Blue = m_Main.FindAction("Blue", throwIfNotFound: true);
+            m_Main_Green = m_Main.FindAction("Green", throwIfNotFound: true);
             m_Main_Squat = m_Main.FindAction("Squat", throwIfNotFound: true);
+            // Shortcut
+            m_Shortcut = asset.FindActionMap("Shortcut", throwIfNotFound: true);
+            m_Shortcut_LoadTitleScene = m_Shortcut.FindAction("LoadTitleScene", throwIfNotFound: true);
+            m_Shortcut_LoadConfigSceneInTitleScene = m_Shortcut.FindAction("LoadConfigSceneInTitleScene", throwIfNotFound: true);
+            m_Shortcut_TriggerScreenSize = m_Shortcut.FindAction("TriggerScreenSize", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -120,11 +355,17 @@ namespace IA
         // Main
         private readonly InputActionMap m_Main;
         private List<IMainActions> m_MainActionsCallbackInterfaces = new List<IMainActions>();
+        private readonly InputAction m_Main_Red;
+        private readonly InputAction m_Main_Blue;
+        private readonly InputAction m_Main_Green;
         private readonly InputAction m_Main_Squat;
         public struct MainActions
         {
             private @IA m_Wrapper;
             public MainActions(@IA wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Red => m_Wrapper.m_Main_Red;
+            public InputAction @Blue => m_Wrapper.m_Main_Blue;
+            public InputAction @Green => m_Wrapper.m_Main_Green;
             public InputAction @Squat => m_Wrapper.m_Main_Squat;
             public InputActionMap Get() { return m_Wrapper.m_Main; }
             public void Enable() { Get().Enable(); }
@@ -135,6 +376,15 @@ namespace IA
             {
                 if (instance == null || m_Wrapper.m_MainActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_MainActionsCallbackInterfaces.Add(instance);
+                @Red.started += instance.OnRed;
+                @Red.performed += instance.OnRed;
+                @Red.canceled += instance.OnRed;
+                @Blue.started += instance.OnBlue;
+                @Blue.performed += instance.OnBlue;
+                @Blue.canceled += instance.OnBlue;
+                @Green.started += instance.OnGreen;
+                @Green.performed += instance.OnGreen;
+                @Green.canceled += instance.OnGreen;
                 @Squat.started += instance.OnSquat;
                 @Squat.performed += instance.OnSquat;
                 @Squat.canceled += instance.OnSquat;
@@ -142,6 +392,15 @@ namespace IA
 
             private void UnregisterCallbacks(IMainActions instance)
             {
+                @Red.started -= instance.OnRed;
+                @Red.performed -= instance.OnRed;
+                @Red.canceled -= instance.OnRed;
+                @Blue.started -= instance.OnBlue;
+                @Blue.performed -= instance.OnBlue;
+                @Blue.canceled -= instance.OnBlue;
+                @Green.started -= instance.OnGreen;
+                @Green.performed -= instance.OnGreen;
+                @Green.canceled -= instance.OnGreen;
                 @Squat.started -= instance.OnSquat;
                 @Squat.performed -= instance.OnSquat;
                 @Squat.canceled -= instance.OnSquat;
@@ -162,9 +421,80 @@ namespace IA
             }
         }
         public MainActions @Main => new MainActions(this);
+
+        // Shortcut
+        private readonly InputActionMap m_Shortcut;
+        private List<IShortcutActions> m_ShortcutActionsCallbackInterfaces = new List<IShortcutActions>();
+        private readonly InputAction m_Shortcut_LoadTitleScene;
+        private readonly InputAction m_Shortcut_LoadConfigSceneInTitleScene;
+        private readonly InputAction m_Shortcut_TriggerScreenSize;
+        public struct ShortcutActions
+        {
+            private @IA m_Wrapper;
+            public ShortcutActions(@IA wrapper) { m_Wrapper = wrapper; }
+            public InputAction @LoadTitleScene => m_Wrapper.m_Shortcut_LoadTitleScene;
+            public InputAction @LoadConfigSceneInTitleScene => m_Wrapper.m_Shortcut_LoadConfigSceneInTitleScene;
+            public InputAction @TriggerScreenSize => m_Wrapper.m_Shortcut_TriggerScreenSize;
+            public InputActionMap Get() { return m_Wrapper.m_Shortcut; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(ShortcutActions set) { return set.Get(); }
+            public void AddCallbacks(IShortcutActions instance)
+            {
+                if (instance == null || m_Wrapper.m_ShortcutActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_ShortcutActionsCallbackInterfaces.Add(instance);
+                @LoadTitleScene.started += instance.OnLoadTitleScene;
+                @LoadTitleScene.performed += instance.OnLoadTitleScene;
+                @LoadTitleScene.canceled += instance.OnLoadTitleScene;
+                @LoadConfigSceneInTitleScene.started += instance.OnLoadConfigSceneInTitleScene;
+                @LoadConfigSceneInTitleScene.performed += instance.OnLoadConfigSceneInTitleScene;
+                @LoadConfigSceneInTitleScene.canceled += instance.OnLoadConfigSceneInTitleScene;
+                @TriggerScreenSize.started += instance.OnTriggerScreenSize;
+                @TriggerScreenSize.performed += instance.OnTriggerScreenSize;
+                @TriggerScreenSize.canceled += instance.OnTriggerScreenSize;
+            }
+
+            private void UnregisterCallbacks(IShortcutActions instance)
+            {
+                @LoadTitleScene.started -= instance.OnLoadTitleScene;
+                @LoadTitleScene.performed -= instance.OnLoadTitleScene;
+                @LoadTitleScene.canceled -= instance.OnLoadTitleScene;
+                @LoadConfigSceneInTitleScene.started -= instance.OnLoadConfigSceneInTitleScene;
+                @LoadConfigSceneInTitleScene.performed -= instance.OnLoadConfigSceneInTitleScene;
+                @LoadConfigSceneInTitleScene.canceled -= instance.OnLoadConfigSceneInTitleScene;
+                @TriggerScreenSize.started -= instance.OnTriggerScreenSize;
+                @TriggerScreenSize.performed -= instance.OnTriggerScreenSize;
+                @TriggerScreenSize.canceled -= instance.OnTriggerScreenSize;
+            }
+
+            public void RemoveCallbacks(IShortcutActions instance)
+            {
+                if (m_Wrapper.m_ShortcutActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IShortcutActions instance)
+            {
+                foreach (var item in m_Wrapper.m_ShortcutActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_ShortcutActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public ShortcutActions @Shortcut => new ShortcutActions(this);
         public interface IMainActions
         {
+            void OnRed(InputAction.CallbackContext context);
+            void OnBlue(InputAction.CallbackContext context);
+            void OnGreen(InputAction.CallbackContext context);
             void OnSquat(InputAction.CallbackContext context);
+        }
+        public interface IShortcutActions
+        {
+            void OnLoadTitleScene(InputAction.CallbackContext context);
+            void OnLoadConfigSceneInTitleScene(InputAction.CallbackContext context);
+            void OnTriggerScreenSize(InputAction.CallbackContext context);
         }
     }
 }

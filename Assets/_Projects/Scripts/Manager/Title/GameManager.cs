@@ -7,11 +7,12 @@ namespace Manager.Title
         internal static GameManager Instance { get; set; } = null;
 
         /// <summary>
-        /// メンバOnStart()より前に呼ぶ
+        /// 全ての入力を受け付けるかどうか
         /// </summary>
-        internal void OnInit()
+        internal bool IsInputAvailable = true;
+
+        private void Awake()
         {
-            // シングルトン化
             if (Instance == null) Instance = this;
             else Destroy(gameObject);
         }
@@ -32,9 +33,6 @@ namespace Manager.Title
 
         }
 
-        /// <summary>
-        /// null代入などの破棄処理
-        /// </summary>
         private void OnDisable()
         {
             Instance = null;

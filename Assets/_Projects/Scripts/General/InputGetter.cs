@@ -271,11 +271,26 @@ namespace IA
 
         #endregion
 
+        public InputInfo Main_RedClick { get; private set; }
+        public InputInfo Main_BlueClick { get; private set; }
+        public InputInfo Main_GreenClick { get; private set; }
         public InputInfo Main_SquatValue0 { get; private set; }
+        public InputInfo Shortcut_LoadTitleSceneClick { get; private set; }
+        public InputInfo Shortcut_LoadConfigSceneInTitleSceneClick { get; private set; }
+        public InputInfo Shortcut_TriggerScreenSizeClick { get; private set; }
 
         private void Init()
         {
+            Main_RedClick = new InputInfo(ia.Main.Red, InputType.Click).Add(inputInfoList);
+            Main_BlueClick = new InputInfo(ia.Main.Blue, InputType.Click).Add(inputInfoList);
+            Main_GreenClick = new InputInfo(ia.Main.Green, InputType.Click).Add(inputInfoList);
             Main_SquatValue0 = new InputInfo(ia.Main.Squat, InputType.Value0).Add(inputInfoList);
+            Shortcut_LoadTitleSceneClick =
+                new InputInfo(ia.Shortcut.LoadTitleScene, InputType.Click).Add(inputInfoList);
+            Shortcut_LoadConfigSceneInTitleSceneClick =
+                new InputInfo(ia.Shortcut.LoadConfigSceneInTitleScene, InputType.Click).Add(inputInfoList);
+            Shortcut_TriggerScreenSizeClick =
+                new InputInfo(ia.Shortcut.TriggerScreenSize, InputType.Click).Add(inputInfoList);
         }
     }
 }
