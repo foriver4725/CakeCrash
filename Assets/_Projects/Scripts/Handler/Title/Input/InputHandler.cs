@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using General;
-using Handler.Title.Sound;
 using IA;
 using Interface;
 using Manager.Title;
@@ -11,8 +10,8 @@ namespace Handler.Title.Input
 {
     internal sealed class InputHandler : IDisposable, IEventable
     {
-        private SoundPlayer soundPlayer;
-        private float waitDurOnPlaced;
+        private Action playClickSE;
+        private readonly float waitDurOnPlaced;
         private CancellationTokenSource cts;
 
         private bool isAvailable
@@ -23,18 +22,17 @@ namespace Handler.Title.Input
         private bool isStart => InputGetter.Instance.Main_RedClick.Bool;
         private bool isConfig => InputGetter.Instance.Shortcut_LoadConfigSceneInTitleSceneClick.Bool;
 
-        internal InputHandler(SoundPlayer soundPlayer, float waitDurOnPlaced, CancellationTokenSource cts)
+        internal InputHandler(Action playClickSE, float waitDurOnPlaced)
         {
-            this.soundPlayer = soundPlayer;
+            this.playClickSE = playClickSE;
             this.waitDurOnPlaced = waitDurOnPlaced;
-            this.cts = cts;
+
+            this.cts = new();
         }
 
         public void Dispose()
         {
-            soundPlayer.Dispose();
-
-            soundPlayer = null;
+            playClickSE = null;
 
             cts.Cancel();
             cts.Dispose();
@@ -57,7 +55,7 @@ namespace Handler.Title.Input
         private void OnLoadSceneButtonPlaced(SceneName loadSceneName)
         {
             isAvailable = false;
-            soundPlayer.PlayClickSE();
+            if (playClickSE is not null) playClickSE();
             waitDurOnPlaced.SecondsWaitAndDo(() => LoadScene.LoadSync(loadSceneName), cts.Token).Forget();
         }
     }
