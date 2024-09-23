@@ -30,64 +30,24 @@ namespace IA
             ""id"": ""51c4f880-bedc-405a-93a3-99f1630834e3"",
             ""actions"": [
                 {
-                    ""name"": ""Click"",
+                    ""name"": ""Squat"",
                     ""type"": ""Button"",
-                    ""id"": ""d5187f13-4809-48e8-bbb4-6d9895f7be0c"",
+                    ""id"": ""de02742e-9708-4d48-ba90-efb1bae92ab2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Hold"",
-                    ""type"": ""Button"",
-                    ""id"": ""24352949-3e63-4582-b9ec-542ca14f1248"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Hold"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Value"",
-                    ""type"": ""Value"",
-                    ""id"": ""2e5ec744-752b-4e97-bc73-5f7c22486a69"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""0161d87b-0ad0-4a06-b8c7-becbe1262416"",
-                    ""path"": """",
+                    ""id"": ""b5a57ac4-b97d-41be-8516-4ba5adc18439"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Click"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cd0e9311-6504-449d-a769-9146a22f13dc"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Hold"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""74dd268c-4b5f-4488-9b7d-1efc6566677d"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Value"",
+                    ""action"": ""Squat"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -98,9 +58,7 @@ namespace IA
 }");
             // Main
             m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
-            m_Main_Click = m_Main.FindAction("Click", throwIfNotFound: true);
-            m_Main_Hold = m_Main.FindAction("Hold", throwIfNotFound: true);
-            m_Main_Value = m_Main.FindAction("Value", throwIfNotFound: true);
+            m_Main_Squat = m_Main.FindAction("Squat", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -162,16 +120,12 @@ namespace IA
         // Main
         private readonly InputActionMap m_Main;
         private List<IMainActions> m_MainActionsCallbackInterfaces = new List<IMainActions>();
-        private readonly InputAction m_Main_Click;
-        private readonly InputAction m_Main_Hold;
-        private readonly InputAction m_Main_Value;
+        private readonly InputAction m_Main_Squat;
         public struct MainActions
         {
             private @IA m_Wrapper;
             public MainActions(@IA wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Click => m_Wrapper.m_Main_Click;
-            public InputAction @Hold => m_Wrapper.m_Main_Hold;
-            public InputAction @Value => m_Wrapper.m_Main_Value;
+            public InputAction @Squat => m_Wrapper.m_Main_Squat;
             public InputActionMap Get() { return m_Wrapper.m_Main; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -181,28 +135,16 @@ namespace IA
             {
                 if (instance == null || m_Wrapper.m_MainActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_MainActionsCallbackInterfaces.Add(instance);
-                @Click.started += instance.OnClick;
-                @Click.performed += instance.OnClick;
-                @Click.canceled += instance.OnClick;
-                @Hold.started += instance.OnHold;
-                @Hold.performed += instance.OnHold;
-                @Hold.canceled += instance.OnHold;
-                @Value.started += instance.OnValue;
-                @Value.performed += instance.OnValue;
-                @Value.canceled += instance.OnValue;
+                @Squat.started += instance.OnSquat;
+                @Squat.performed += instance.OnSquat;
+                @Squat.canceled += instance.OnSquat;
             }
 
             private void UnregisterCallbacks(IMainActions instance)
             {
-                @Click.started -= instance.OnClick;
-                @Click.performed -= instance.OnClick;
-                @Click.canceled -= instance.OnClick;
-                @Hold.started -= instance.OnHold;
-                @Hold.performed -= instance.OnHold;
-                @Hold.canceled -= instance.OnHold;
-                @Value.started -= instance.OnValue;
-                @Value.performed -= instance.OnValue;
-                @Value.canceled -= instance.OnValue;
+                @Squat.started -= instance.OnSquat;
+                @Squat.performed -= instance.OnSquat;
+                @Squat.canceled -= instance.OnSquat;
             }
 
             public void RemoveCallbacks(IMainActions instance)
@@ -222,9 +164,7 @@ namespace IA
         public MainActions @Main => new MainActions(this);
         public interface IMainActions
         {
-            void OnClick(InputAction.CallbackContext context);
-            void OnHold(InputAction.CallbackContext context);
-            void OnValue(InputAction.CallbackContext context);
+            void OnSquat(InputAction.CallbackContext context);
         }
     }
 }

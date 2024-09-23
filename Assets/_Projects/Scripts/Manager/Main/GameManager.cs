@@ -9,7 +9,8 @@ namespace Manager.Main
 
         // ゲームの状態とフラグ
         private State state;
-        internal Flag flag;
+        private Flag flag;
+        internal Flag Flag => flag;
 
         /// <summary>
         /// メンバOnStart()より前に呼ぶ
