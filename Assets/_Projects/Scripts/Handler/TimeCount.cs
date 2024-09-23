@@ -16,8 +16,8 @@ namespace Handler.Main.TimeRelated
 
         private Image clockImage;
 
-        private ClearControl clearControl;
-        private SunOrbitControl sunOrbitControl;
+        private ClearController clearControl;
+        private SunOrbitController sunOrbitControl;
         
 
         internal TimeCount(float _maxtimeLimit, Image _clockImage, Light _directionalLight)

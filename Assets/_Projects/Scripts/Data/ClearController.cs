@@ -1,17 +1,14 @@
 ﻿using Interface;
 using System;
-using UnityEngine;
+using static UnityEngine.Debug;
 
 namespace Handler.Main.TimeRelated 
 {
     /// <summary>
-    /// ディレクショナルライトに関するクラス
+    /// ゲームクリアに関するクラス
     /// </summary>
-    internal sealed class SunOrbitControl : IDisposable, INullExistable, IEventable
+    internal sealed class ClearController : IDisposable, INullExistable, IEventable
     {
-        internal Light DirectionalLight { get; private set; }
-
-        public SunOrbitControl(Light light) => DirectionalLight = light;
 
         /// <summary>
         /// Start()で呼ぶ
@@ -24,22 +21,32 @@ namespace Handler.Main.TimeRelated
         /// <summary>
         /// Update()で呼ぶ
         /// </summary>
-        public void Update()　
+        public void Update()
         {
             if (IsNullExist()) return;
         }
 
         /// <summary>
+        /// ゲームクリア時の処理
+        /// </summary>
+        internal void GameClear()
+        {
+            Log("ゲームクリア");
+        }
+
+        /// <summary>
         /// null代入などの破棄処理
         /// </summary>
-        public void Dispose() => DirectionalLight = null;
+        public void Dispose()
+        {
+
+        }
 
         /// <summary>
         /// nullメンバが存在するか、またはnullメンバを持つメンバがいるかを確認する処理
         /// </summary>
         public bool IsNullExist()
         {
-            if (DirectionalLight == null) return true;
             return false;
         }
     }
