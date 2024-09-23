@@ -6,7 +6,8 @@ using UnityEngine.UI;
 namespace Handler.Main.Time
 {
     /// <summary>
-    /// 時間を計る
+    /// メインゲーム開始からの時間を計測する
+    /// 時間に応じて、太陽を回し、クリアを判定する
     /// </summary>
     internal sealed class TimeCounter : IDisposable, INullExistable, IEventable
     {
@@ -29,17 +30,11 @@ namespace Handler.Main.Time
 
         }
 
-        /// <summary>
-        /// Start()で呼ぶ
-        /// </summary>
         public void Start()
         {
             if (IsNullExist()) return;
         }
 
-        /// <summary>
-        /// Update()で呼ぶ
-        /// </summary>
         public void Update()
         {
             if (IsNullExist()) return;
@@ -58,9 +53,6 @@ namespace Handler.Main.Time
 
         }
 
-        /// <summary>
-        /// null代入などの破棄処理
-        /// </summary>
         public void Dispose()
         {
             clearControl.Dispose();
@@ -70,9 +62,6 @@ namespace Handler.Main.Time
             sunOrbitControl = null;
         }
 
-        /// <summary>
-        /// nullメンバが存在するか、またはnullメンバを持つメンバがいるかを確認する処理
-        /// </summary>
         public bool IsNullExist()
         {
             if (clearControl == null) return true;
