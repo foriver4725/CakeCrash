@@ -1,6 +1,6 @@
 ﻿using Interface;
 using System;
-using static UnityEngine.Debug;
+using UnityEngine;
 
 namespace Handler.Main.TimeRelated
 {
@@ -21,7 +21,7 @@ namespace Handler.Main.TimeRelated
 
         internal void GameClear()
         {
-            Log("ゲームクリア");
+            Debug.Log("ゲームクリア");
         }
 
         public void Dispose()
