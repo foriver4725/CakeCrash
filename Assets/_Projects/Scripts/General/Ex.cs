@@ -1,4 +1,8 @@
-﻿namespace General
+﻿using Cysharp.Threading.Tasks;
+using System;
+using System.Threading;
+
+namespace General
 {
     internal static class Ex
     {
@@ -11,6 +15,14 @@
             if (a == b) return 0;
 
             return (x - a) * (d - c) / (b - a) + c;
+        }
+
+        internal static async UniTask SecondsWaitAndDo(this float seconds, Action action, CancellationToken ct)
+        {
+            if (action == null) return;
+
+            await UniTask.Delay(TimeSpan.FromSeconds(seconds), cancellationToken: ct);
+            action();
         }
     }
 }

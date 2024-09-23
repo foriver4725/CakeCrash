@@ -29,5 +29,9 @@ namespace SO
         [SerializeField, Header("タイトル画像の切り替わり")]
         private TitleImageChangeProperty titleImageChangeProperty;
         internal TitleImageChangeProperty TitleImageChangeProperty => titleImageChangeProperty;
+
+        [SerializeField, Range(+0.0f, 1.0f), Header("ボタンを押した後、何秒待つか")]
+        private float waitDurOnPlaced;
+        internal float WaitDurOnPlaced => waitDurOnPlaced;
     }
 }
