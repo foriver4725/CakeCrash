@@ -1,0 +1,63 @@
+﻿using General;
+using Interface;
+using Manager.Main;
+using Data.Main.TimeCount;
+using System;
+using UnityEngine;
+
+namespace Handler.Main.TimeCount
+{
+    /// <summary>
+    /// メインゲーム開始からの時間を計測する
+    /// 時間に応じて、太陽を回し、時間のUIを変化させる
+    /// 時間が来たら、クリアを判定する
+    /// </summary>
+    internal sealed class TimeCounter : IDisposable, IEventable
+    {
+        private bool isBeingClearable => GameManager.Instance.Flag.IsBeingClearable;
+        private bool isBeingCleared
+        {
+            get { return GameManager.Instance.State.IsBeingCleared; }
+            set { GameManager.Instance.State.IsBeingCleared = value; }
+        }
+
+        private float t = 0;
+        private readonly float maxT;
+
+        private SceneReference reference;
+
+        internal TimeCounter(SceneReference reference, float maxT)
+        {
+            this.reference = reference;
+            this.maxT = maxT;
+        }
+
+        public void Start() { }
+
+        public void Update()
+        {
+            if (isBeingCleared is true) return;
+
+            if (t >= maxT) UpdateClearFlag();
+            else
+            {
+                t += Time.deltaTime;
+                float p = t.Remap(0, maxT, 0, 1);
+                reference.SetSunRotation(p);
+                reference.SetClockFillAmount(p);
+            }
+        }
+
+        public void Dispose()
+        {
+            reference.Dispose();
+            reference = null;
+        }
+
+        internal void UpdateClearFlag()
+        {
+            if (isBeingClearable is false) return;
+            isBeingCleared = true;
+        }
+    }
+}

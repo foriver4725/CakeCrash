@@ -1,4 +1,4 @@
-﻿namespace General.Main.Player.PlayerSquat
+﻿namespace General
 {
     internal static class Ex
     {
