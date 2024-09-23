@@ -15,6 +15,19 @@ MonoBehaviour:
   am: {fileID: 24100000, guid: 062047413a3296e4cb81a398c7639a4b, type: 2}
   bgm:
     title: {fileID: 8300000, guid: fba88be1562efab4da88f3f74d3fb69d, type: 3}
-    main: {fileID: 8300000, guid: 041c161972ca59a4985cb55135717bb8, type: 3}
+    main: {fileID: 8300000, guid: 6d82d333108c3e14993782f59147f871, type: 3}
   se:
-    click: {fileID: 8300000, guid: 6a57e07c88f08404c8ad5d360103e617, type: 3}
+    player:
+      smash: {fileID: 8300000, guid: 5cd291ecf722ea14aae626f96fbaccf8, type: 3}
+      crash: {fileID: 8300000, guid: 67517a97e9d8c5b4986ce3ac9e768b9e, type: 3}
+      unSmashable: {fileID: 8300000, guid: 30c26f7f6ed4a3a4c9ba966eb49a0c1a, type: 3}
+      crashFailed: {fileID: 8300000, guid: 3e9c764555f15c94f8cc2bbabc352e7b, type: 3}
+      heartbeat: {fileID: 8300000, guid: 3baf570090dada84d8419d62c1f0620f, type: 3}
+      foundByGuardman: {fileID: 8300000, guid: 35dbef882dfaa42438e684f472bb748b, type: 3}
+    guardman:
+      walk: {fileID: 8300000, guid: e706c91c505d64e4a9ae5b26a6d1a04d, type: 3}
+      doorHandle: {fileID: 8300000, guid: b4ca1e7309e2820458250d77843c9f0c, type: 3}
+      doorOpen: {fileID: 8300000, guid: 9a6687e7917daf947867b7ecf3b85236, type: 3}
+      doorClose: {fileID: 8300000, guid: d301eca339a60824b931268fc44a8188, type: 3}
+    general:
+      click: {fileID: 8300000, guid: 6a57e07c88f08404c8ad5d360103e617, type: 3}

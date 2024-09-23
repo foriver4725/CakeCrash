@@ -57,8 +57,75 @@ namespace SO
     [Serializable]
     internal sealed class SEReference
     {
-        [SerializeField, Header("クリック")]
-        private AudioClip click;
-        internal AudioClip Click => click;
+        [SerializeField, Header("プレイヤー 関連")]
+        private SE.Player player;
+        internal SE.Player Player => player;
+
+        [SerializeField, Header("警備員 関連")]
+        private SE.Guardman guardman;
+        internal SE.Guardman Guardman => guardman;
+
+        [SerializeField, Header("汎用")]
+        private SE.General general;
+        internal SE.General General => general;
+    }
+
+    namespace SE
+    {
+        [Serializable]
+        internal sealed class Player
+        {
+            [SerializeField, Header("ハンマーをスマッシュする")]
+            private AudioClip smash;
+            internal AudioClip Smash => smash;
+
+            [SerializeField, Header("ハンマーでクラッシュする")]
+            private AudioClip crash;
+            internal AudioClip Crash => crash;
+
+            [SerializeField, Header("スマッシュ不可")]
+            private AudioClip unSmashable;
+            internal AudioClip UnSmashable => unSmashable;
+
+            [SerializeField, Header("クラッシュ失敗")]
+            private AudioClip crashFailed;
+            internal AudioClip CrashFailed => crashFailed;
+
+            [SerializeField, Header("心臓の鼓動")]
+            private AudioClip heartbeat;
+            internal AudioClip Heartbeat => heartbeat;
+
+            [SerializeField, Header("警備員に見つかる")]
+            private AudioClip foundByGuardman;
+            internal AudioClip FoundByGuardman => foundByGuardman;
+        }
+
+        [Serializable]
+        internal sealed class Guardman
+        {
+            [SerializeField, Header("歩く")]
+            private AudioClip walk;
+            internal AudioClip Walk => walk;
+
+            [SerializeField, Header("ドアに手をかける")]
+            private AudioClip doorHandle;
+            internal AudioClip DoorHandle => doorHandle;
+
+            [SerializeField, Header("ドアを開く")]
+            private AudioClip doorOpen;
+            internal AudioClip DoorOpen => doorOpen;
+
+            [SerializeField, Header("ドアを閉める")]
+            private AudioClip doorClose;
+            internal AudioClip DoorClose => doorClose;
+        }
+
+        [Serializable]
+        internal sealed class General
+        {
+            [SerializeField, Header("クリックする")]
+            private AudioClip click;
+            internal AudioClip Click => click;
+        }
     }
 }

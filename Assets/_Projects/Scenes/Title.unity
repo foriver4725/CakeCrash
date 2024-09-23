@@ -406,11 +406,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bcb0790e97d3b741a4bd5a557ce38d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleImageReference:
+  imageReference:
     titleImages:
     - {fileID: 1349664978}
     - {fileID: 1272958647}
-  titleAudioSourceReference:
+  audioSourceReference:
     bgm: {fileID: 1991846118}
     clickSE: {fileID: 725034714}
 --- !u!1 &1272958645
