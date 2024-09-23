@@ -6,18 +6,32 @@ using UnityEngine;
 
 namespace Data.Main.Player.PlayerSquat
 {
-    internal sealed class Reference : IDisposable
+    internal sealed class SceneReference : IDisposable
     {
         private Transform cameraTf;
         private AudioSource squatSE;
         private AudioSource standupSE;
 
-        internal float CameraLocalY => cameraTf.localPosition.y;
+        internal float CameraLocalY
+        {
+            get
+            {
+                if (cameraTf == null) return 0;
+                return cameraTf.localPosition.y;
+            }
+            set
+            {
+                if (cameraTf == null) return;
+                Vector3 pos = cameraTf.transform.localPosition;
+                pos.y = value;
+                cameraTf.transform.localPosition = pos;
+            }
+        }
 
         private CancellationTokenSource ctsOnDispose;
         private CancellationTokenSource ctsAnyTime;
 
-        internal Reference(Transform cameraTf, AudioSource squatSE, AudioSource standupSE)
+        internal SceneReference(Transform cameraTf, AudioSource squatSE, AudioSource standupSE)
         {
             this.cameraTf = cameraTf;
             this.squatSE = squatSE;
@@ -48,18 +62,6 @@ namespace Data.Main.Player.PlayerSquat
             if (cameraTf == null) return;
 
             await cameraTf.DOMoveY(endY, dur).ToUniTask(cancellationToken: ct);
-        }
-
-        /// <summary>
-        /// カメラのローカルY座標を、指定した値に変更する
-        /// </summary>
-        internal void SetCameraLocalY(float y)
-        {
-            if (cameraTf == null) return;
-
-            Vector3 pos = cameraTf.transform.localPosition;
-            pos.y = y;
-            cameraTf.transform.localPosition = pos;
         }
 
         /// <summary>

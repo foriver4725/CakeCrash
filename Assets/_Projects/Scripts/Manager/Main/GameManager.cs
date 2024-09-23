@@ -8,12 +8,11 @@ namespace Manager.Main
         internal static GameManager Instance { get; set; } = null;
 
         // ゲームの状態とフラグ
-        private State state;
-        private Flag flag;
-        internal Flag Flag => flag;
+        internal State State { get; set; }
+        internal Flag Flag { get; private set; }
 
         /// <summary>
-        /// メンバOnStart()より前に呼ぶ
+        /// OnStart()より前に呼ぶ
         /// </summary>
         internal void OnInit()
         {
@@ -22,38 +21,29 @@ namespace Manager.Main
             else Destroy(gameObject);
         }
 
-        /// <summary>
-        /// Start()で一番最初に呼ぶ
-        /// </summary>
         internal void OnStart()
         {
-            state = new();
-            flag = new(state);
+            State = new();
+            Flag = new(State);
         }
 
-        /// <summary>
-        /// Update()で一番最初に呼ぶ
-        /// </summary>
         internal void OnUpdate()
         {
 
         }
 
-        /// <summary>
-        /// null代入などの破棄処理
-        /// </summary>
         private void OnDisable()
         {
-            flag.Dispose();
+            Flag.Dispose();
 
             Instance = null;
-            flag = null;
-            state = null;
+            Flag = null;
+            State = null;
         }
     }
 
     /// <summary>
-    /// ゲームの状態
+    /// ゲームの状態（自由に変更可能）
     /// </summary>
     internal sealed class State
     {
@@ -86,7 +76,7 @@ namespace Manager.Main
     }
 
     /// <summary>
-    /// ゲームのフラグ
+    /// ゲームのフラグ(Stateに連動して変化する。外部から勝手に書き換えないこと)
     /// </summary>
     internal sealed class Flag : IDisposable
     {

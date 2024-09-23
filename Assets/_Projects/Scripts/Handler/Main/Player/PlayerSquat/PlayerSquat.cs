@@ -2,21 +2,20 @@
 using Interface;
 using System;
 using Data.Main.Player.PlayerSquat;
-using General.Main.Player.PlayerSquat;
+using General;
 using Manager.Main;
-using UnityEngine;
 
 namespace Handler.Main.Player.PlayerSquat
 {
     internal sealed class PlayerSquat : IDisposable, INullExistable, IEventable
     {
-        private Reference reference;
+        private SceneReference reference;
         private Property property;
 
         private bool preInput = false, input = false;  // 入力の監視フラグ
         private bool preEnable = true, enable = true;  // 入力可否の監視フラグ
 
-        internal PlayerSquat(Reference reference, Property property)
+        internal PlayerSquat(SceneReference reference, Property property)
         {
             this.reference = reference;
             this.property = property;
@@ -26,7 +25,7 @@ namespace Handler.Main.Player.PlayerSquat
         {
             if (IsNullExist()) return;
 
-            reference.SetCameraLocalY(property.Sy);
+            reference.CameraLocalY = property.Sy;
         }
 
         public void Update()
