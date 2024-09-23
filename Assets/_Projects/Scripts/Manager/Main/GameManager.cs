@@ -16,17 +16,22 @@ namespace Manager.Main
         /// </summary>
         internal void OnInit()
         {
-            // シングルトン化
             if (Instance == null) Instance = this;
             else Destroy(gameObject);
         }
 
+        /// <summary>
+        /// Start()で一番最初に呼ぶ
+        /// </summary>
         internal void OnStart()
         {
             State = new();
             Flag = new(State);
         }
 
+        /// <summary>
+        /// Update()で一番最初に呼ぶ
+        /// </summary>
         internal void OnUpdate()
         {
 
