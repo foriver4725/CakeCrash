@@ -6,9 +6,9 @@ using UnityEngine.UI;
 namespace Handler.Main.Time
 {
     /// <summary>
-    /// 時間管理に関するクラス
+    /// 時間を計る
     /// </summary>
-    internal sealed class TimeCount : IDisposable, INullExistable, IEventable
+    internal sealed class TimeCounter : IDisposable, INullExistable, IEventable
     {
         private float elapsedTime = 0;
         private readonly float maxTimeLimit;
@@ -18,15 +18,15 @@ namespace Handler.Main.Time
 
         private ClearController clearControl;
         private SunOrbitController sunOrbitControl;
-        
 
-        internal TimeCount(float _maxtimeLimit, Image _clockImage, Light _directionalLight)
+
+        internal TimeCounter(float _maxtimeLimit, Image _clockImage, Light _directionalLight)
         {
             maxTimeLimit = _maxtimeLimit;
-            clearControl = new ();
+            clearControl = new();
             clockImage = _clockImage;
-            sunOrbitControl = new (_directionalLight);
-            
+            sunOrbitControl = new(_directionalLight);
+
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Handler.Main.Time
 
             if (isClear) return;
 
-            if(elapsedTime >= maxTimeLimit)
+            if (elapsedTime >= maxTimeLimit)
             {
                 isClear = true;
                 clearControl.GameClear();
@@ -54,7 +54,7 @@ namespace Handler.Main.Time
             }
 
             elapsedTime += UnityEngine.Time.deltaTime;
-            sunOrbitControl.DirectionalLight.transform.rotation = Quaternion.Euler(new Vector3(elapsedTime * 180f, 0.0f, 0.0f));
+            sunOrbitControl.Sun.transform.rotation = Quaternion.Euler(new Vector3(elapsedTime * 180f, 0.0f, 0.0f));
 
         }
 

@@ -9,9 +9,9 @@ namespace Handler.Main.Time
     /// </summary>
     internal sealed class SunOrbitController : IDisposable, INullExistable, IEventable
     {
-        internal Light DirectionalLight { get; private set; }
+        internal Light Sun { get; private set; }
 
-        public SunOrbitController(Light light) => DirectionalLight = light;
+        public SunOrbitController(Light directionalLight) => Sun = directionalLight;
 
         public void Start()
         {
@@ -23,11 +23,11 @@ namespace Handler.Main.Time
             if (IsNullExist()) return;
         }
 
-        public void Dispose() => DirectionalLight = null;
+        public void Dispose() => Sun = null;
 
         public bool IsNullExist()
         {
-            if (DirectionalLight == null) return true;
+            if (Sun == null) return true;
             return false;
         }
     }
