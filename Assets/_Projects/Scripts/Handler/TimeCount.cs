@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Handler.Main.TimeRelated
+namespace Handler.Main.Time
 {
     /// <summary>
     /// 時間管理に関するクラス
@@ -53,7 +53,7 @@ namespace Handler.Main.TimeRelated
                 return;
             }
 
-            elapsedTime += Time.deltaTime;
+            elapsedTime += UnityEngine.Time.deltaTime;
             sunOrbitControl.DirectionalLight.transform.rotation = Quaternion.Euler(new Vector3(elapsedTime * 180f, 0.0f, 0.0f));
 
         }

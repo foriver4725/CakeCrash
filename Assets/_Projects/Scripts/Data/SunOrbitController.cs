@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Handler.Main.TimeRelated
+namespace Handler.Main.Time
 {
     /// <summary>
     /// 時間に応じて太陽を回す
