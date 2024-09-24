@@ -143,6 +143,15 @@ namespace IA
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TriggerDebugInfoDisplay"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e329ad1-2b7a-4bc1-87fe-b93d66073976"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -277,6 +286,50 @@ namespace IA
                     ""action"": ""TriggerScreenSize"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Two Modifiers"",
+                    ""id"": ""343df209-f3ff-431d-a6e2-81c1fa2826d9"",
+                    ""path"": ""TwoModifiers"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerDebugInfoDisplay"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier1"",
+                    ""id"": ""becf07a9-3de8-4161-95cd-d93bf4393b1b"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerDebugInfoDisplay"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier2"",
+                    ""id"": ""f977ae41-b72a-4a01-8c17-beff13411adb"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerDebugInfoDisplay"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""8d12dac9-4123-4a8b-b6a2-11ed32f99fb5"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerDebugInfoDisplay"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -294,6 +347,7 @@ namespace IA
             m_Shortcut_LoadTitleScene = m_Shortcut.FindAction("LoadTitleScene", throwIfNotFound: true);
             m_Shortcut_LoadConfigSceneInTitleScene = m_Shortcut.FindAction("LoadConfigSceneInTitleScene", throwIfNotFound: true);
             m_Shortcut_TriggerScreenSize = m_Shortcut.FindAction("TriggerScreenSize", throwIfNotFound: true);
+            m_Shortcut_TriggerDebugInfoDisplay = m_Shortcut.FindAction("TriggerDebugInfoDisplay", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -428,6 +482,7 @@ namespace IA
         private readonly InputAction m_Shortcut_LoadTitleScene;
         private readonly InputAction m_Shortcut_LoadConfigSceneInTitleScene;
         private readonly InputAction m_Shortcut_TriggerScreenSize;
+        private readonly InputAction m_Shortcut_TriggerDebugInfoDisplay;
         public struct ShortcutActions
         {
             private @IA m_Wrapper;
@@ -435,6 +490,7 @@ namespace IA
             public InputAction @LoadTitleScene => m_Wrapper.m_Shortcut_LoadTitleScene;
             public InputAction @LoadConfigSceneInTitleScene => m_Wrapper.m_Shortcut_LoadConfigSceneInTitleScene;
             public InputAction @TriggerScreenSize => m_Wrapper.m_Shortcut_TriggerScreenSize;
+            public InputAction @TriggerDebugInfoDisplay => m_Wrapper.m_Shortcut_TriggerDebugInfoDisplay;
             public InputActionMap Get() { return m_Wrapper.m_Shortcut; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -453,6 +509,9 @@ namespace IA
                 @TriggerScreenSize.started += instance.OnTriggerScreenSize;
                 @TriggerScreenSize.performed += instance.OnTriggerScreenSize;
                 @TriggerScreenSize.canceled += instance.OnTriggerScreenSize;
+                @TriggerDebugInfoDisplay.started += instance.OnTriggerDebugInfoDisplay;
+                @TriggerDebugInfoDisplay.performed += instance.OnTriggerDebugInfoDisplay;
+                @TriggerDebugInfoDisplay.canceled += instance.OnTriggerDebugInfoDisplay;
             }
 
             private void UnregisterCallbacks(IShortcutActions instance)
@@ -466,6 +525,9 @@ namespace IA
                 @TriggerScreenSize.started -= instance.OnTriggerScreenSize;
                 @TriggerScreenSize.performed -= instance.OnTriggerScreenSize;
                 @TriggerScreenSize.canceled -= instance.OnTriggerScreenSize;
+                @TriggerDebugInfoDisplay.started -= instance.OnTriggerDebugInfoDisplay;
+                @TriggerDebugInfoDisplay.performed -= instance.OnTriggerDebugInfoDisplay;
+                @TriggerDebugInfoDisplay.canceled -= instance.OnTriggerDebugInfoDisplay;
             }
 
             public void RemoveCallbacks(IShortcutActions instance)
@@ -495,6 +557,7 @@ namespace IA
             void OnLoadTitleScene(InputAction.CallbackContext context);
             void OnLoadConfigSceneInTitleScene(InputAction.CallbackContext context);
             void OnTriggerScreenSize(InputAction.CallbackContext context);
+            void OnTriggerDebugInfoDisplay(InputAction.CallbackContext context);
         }
     }
 }

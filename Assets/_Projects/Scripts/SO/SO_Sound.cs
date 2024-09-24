@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 namespace SO
 {
     [CreateAssetMenu(menuName = "SO/SO_Sound", fileName = "SO_Sound")]
-    public class SO_Sound : ScriptableObject
+    public sealed class SO_Sound : ScriptableObject
     {
         #region
 

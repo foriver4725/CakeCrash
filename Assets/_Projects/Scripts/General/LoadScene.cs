@@ -12,8 +12,6 @@ namespace General
 
     internal static class LoadScene
     {
-        internal static void LoadSync(SceneName sceneName) => SceneManager.LoadScene(sceneName.ToSceneNameString());
-
         private static string ToSceneNameString(this SceneName sceneName)
             => sceneName switch
             {
@@ -22,5 +20,10 @@ namespace General
                 SceneName.Main => "Main",
                 _ => throw new Exception("–³Œø‚ÈŒ`Ž®‚Å‚·")
             };
+
+        internal static void LoadSync(SceneName sceneName) => SceneManager.LoadScene(sceneName.ToSceneNameString());
+
+        internal static bool IsInThisScene(SceneName sceneName)
+            => SceneManager.GetActiveScene().name == sceneName.ToSceneNameString();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SO
 {
     [CreateAssetMenu(menuName = "SO/SO_TitleDirection", fileName = "SO_TitleDirection")]
-    public class SO_TitleDirection : ScriptableObject
+    public sealed class SO_TitleDirection : ScriptableObject
     {
         #region
 
