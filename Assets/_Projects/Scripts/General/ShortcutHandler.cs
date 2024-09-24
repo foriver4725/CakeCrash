@@ -55,6 +55,10 @@ namespace General
             {
                 debugInfoText.enabled = !debugInfoText.enabled;
             }
+            else if (input.Shortcut_QuitGame.Bool)
+            {
+                LoadScene.QuitGame();
+            }
 
             if (debugInfoText.enabled) debugInfoDisplayer.Update();
         }
