@@ -42,28 +42,29 @@ namespace General
             else throw new Exception("–³Œø‚ÈŽí—Þ‚Å‚·");
         }
 
-        internal static float GetVolume(SoundType type)
+        internal static float BGMVolume
+        {
+            get => GetVolume(SoundType.BGM);
+            set => SetVolume(SoundType.BGM, value);
+        }
+
+        internal static float SEVolume
+        {
+            get => GetVolume(SoundType.SE);
+            set => SetVolume(SoundType.SE, value);
+        }
+
+        private static float GetVolume(SoundType type)
         {
             if (am == null) return 0;
             am.GetFloat(type.ToParamNameString(), out float volume);
             return volume;
         }
 
-        internal static void SetVolume(SoundType type, float newVolume)
+        private static void SetVolume(SoundType type, float newVolume)
         {
             if (am == null) return;
             am.SetFloat(type.ToParamNameString(), newVolume);
-        }
-
-        /// <summary>
-        /// volumeDiff‚Í[-10, 10]“à
-        /// </summary>
-        internal static void ChangeVolume(SoundType type, float volumeDiff)
-        {
-            if (am == null) return;
-            if (volumeDiff is not (>= -10 and <= 10)) return;
-
-            SetVolume(type, GetVolume(type) + volumeDiff);
         }
 
         private static AudioMixer am => SO_Sound.Entity.AM;
