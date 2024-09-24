@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Reference.Title.TitleImage
+namespace Data.Title.TitleImage
 {
     [Serializable]
     internal sealed class ImageReference
