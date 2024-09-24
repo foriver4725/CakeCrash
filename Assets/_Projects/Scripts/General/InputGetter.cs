@@ -279,6 +279,7 @@ namespace IA
         public InputInfo Shortcut_LoadConfigSceneInTitleSceneClick { get; private set; }
         public InputInfo Shortcut_TriggerScreenSizeClick { get; private set; }
         public InputInfo Shortcut_TriggerDebugInfoDisplayClick { get; private set; }
+        public InputInfo Shortcut_QuitGame { get; private set; }
 
         private void Init()
         {
@@ -294,6 +295,7 @@ namespace IA
                 new InputInfo(ia.Shortcut.TriggerScreenSize, InputType.Click).Add(inputInfoList);
             Shortcut_TriggerDebugInfoDisplayClick =
                 new InputInfo(ia.Shortcut.TriggerDebugInfoDisplay, InputType.Click).Add(inputInfoList);
+            Shortcut_QuitGame = new InputInfo(ia.Shortcut.QuitGame, InputType.Click).Add(inputInfoList);
         }
     }
 }

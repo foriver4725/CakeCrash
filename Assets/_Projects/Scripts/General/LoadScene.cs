@@ -1,4 +1,6 @@
 using System;
+using UnityEditor;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace General
@@ -25,5 +27,12 @@ namespace General
 
         internal static bool IsInThisScene(SceneName sceneName)
             => SceneManager.GetActiveScene().name == sceneName.ToSceneNameString();
+
+        internal static void QuitGame() =>
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
     }
 }

@@ -152,6 +152,15 @@ namespace IA
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuitGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""c55359b2-152d-45b6-92d3-81833d8b9fad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -330,6 +339,50 @@ namespace IA
                     ""action"": ""TriggerDebugInfoDisplay"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Two Modifiers"",
+                    ""id"": ""cc01eabb-a008-40e6-9118-364bae5b2f4a"",
+                    ""path"": ""TwoModifiers"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuitGame"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier1"",
+                    ""id"": ""2121ee5b-83d3-4da0-bef1-38a960378324"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuitGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier2"",
+                    ""id"": ""a1654b05-9b58-4920-808f-6825093227f5"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuitGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""5b460431-a493-4227-8a9d-630c63efd3d0"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuitGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -348,6 +401,7 @@ namespace IA
             m_Shortcut_LoadConfigSceneInTitleScene = m_Shortcut.FindAction("LoadConfigSceneInTitleScene", throwIfNotFound: true);
             m_Shortcut_TriggerScreenSize = m_Shortcut.FindAction("TriggerScreenSize", throwIfNotFound: true);
             m_Shortcut_TriggerDebugInfoDisplay = m_Shortcut.FindAction("TriggerDebugInfoDisplay", throwIfNotFound: true);
+            m_Shortcut_QuitGame = m_Shortcut.FindAction("QuitGame", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -483,6 +537,7 @@ namespace IA
         private readonly InputAction m_Shortcut_LoadConfigSceneInTitleScene;
         private readonly InputAction m_Shortcut_TriggerScreenSize;
         private readonly InputAction m_Shortcut_TriggerDebugInfoDisplay;
+        private readonly InputAction m_Shortcut_QuitGame;
         public struct ShortcutActions
         {
             private @IA m_Wrapper;
@@ -491,6 +546,7 @@ namespace IA
             public InputAction @LoadConfigSceneInTitleScene => m_Wrapper.m_Shortcut_LoadConfigSceneInTitleScene;
             public InputAction @TriggerScreenSize => m_Wrapper.m_Shortcut_TriggerScreenSize;
             public InputAction @TriggerDebugInfoDisplay => m_Wrapper.m_Shortcut_TriggerDebugInfoDisplay;
+            public InputAction @QuitGame => m_Wrapper.m_Shortcut_QuitGame;
             public InputActionMap Get() { return m_Wrapper.m_Shortcut; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -512,6 +568,9 @@ namespace IA
                 @TriggerDebugInfoDisplay.started += instance.OnTriggerDebugInfoDisplay;
                 @TriggerDebugInfoDisplay.performed += instance.OnTriggerDebugInfoDisplay;
                 @TriggerDebugInfoDisplay.canceled += instance.OnTriggerDebugInfoDisplay;
+                @QuitGame.started += instance.OnQuitGame;
+                @QuitGame.performed += instance.OnQuitGame;
+                @QuitGame.canceled += instance.OnQuitGame;
             }
 
             private void UnregisterCallbacks(IShortcutActions instance)
@@ -528,6 +587,9 @@ namespace IA
                 @TriggerDebugInfoDisplay.started -= instance.OnTriggerDebugInfoDisplay;
                 @TriggerDebugInfoDisplay.performed -= instance.OnTriggerDebugInfoDisplay;
                 @TriggerDebugInfoDisplay.canceled -= instance.OnTriggerDebugInfoDisplay;
+                @QuitGame.started -= instance.OnQuitGame;
+                @QuitGame.performed -= instance.OnQuitGame;
+                @QuitGame.canceled -= instance.OnQuitGame;
             }
 
             public void RemoveCallbacks(IShortcutActions instance)
@@ -558,6 +620,7 @@ namespace IA
             void OnLoadConfigSceneInTitleScene(InputAction.CallbackContext context);
             void OnTriggerScreenSize(InputAction.CallbackContext context);
             void OnTriggerDebugInfoDisplay(InputAction.CallbackContext context);
+            void OnQuitGame(InputAction.CallbackContext context);
         }
     }
 }
