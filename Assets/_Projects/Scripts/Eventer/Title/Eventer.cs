@@ -2,8 +2,8 @@
 using Handler.Title.Sound;
 using Handler.Title.TitleImage;
 using Manager.Title;
-using Reference.Title.Sound;
-using Reference.Title.TitleImage;
+using Data.Title.Sound;
+using Data.Title.TitleImage;
 using SO;
 using UnityEngine;
 

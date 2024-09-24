@@ -1,23 +1,23 @@
-﻿namespace Data.Main.Player.PlayerSquat
+﻿using System;
+using UnityEngine;
+
+namespace Data.Main.Player.PlayerSquat
 {
+    [Serializable]
     internal sealed class Property
     {
-        /// <summary>
-        /// 何秒かけて変化しきるか
-        /// </summary>
-        internal float Duration { get; private set; }
+        [SerializeField, Range(0.1f, 1.0f), Header("何秒かけて変化しきるか")]
+        private float duration;
+        internal float Duration => duration;
 
-        /// <summary>
-        /// 開始/終了のローカルy座標
-        /// </summary>
-        internal float Sy { get; private set; }
-        internal float Ey { get; private set; }
+        [SerializeField, Header("開始/終了のローカルy座標")]
+        private Vector2 y;
+        internal float Sy => Mathf.Clamp(y.x, -100, 100);
+        internal float Ey => Mathf.Clamp(y.y, -100, Sy - 0.01f);
 
-        internal Property(float duration, float sy, float ey)
-        {
-            this.Duration = duration;
-            this.Sy = sy;
-            this.Ey = ey;
-        }
+        [SerializeField, Header("開始/終了のローカル回転x")]
+        private Vector2 rx;
+        internal float Srx => Mathf.Clamp(rx.x, +0, 60);
+        internal float Erx => Mathf.Clamp(rx.y, -60, -0);
     }
 }

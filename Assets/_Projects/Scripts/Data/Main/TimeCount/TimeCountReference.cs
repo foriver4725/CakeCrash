@@ -1,25 +1,22 @@
-﻿using System;
+﻿using General;
+using SO;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Data.Main.TimeCount
 {
-    internal sealed class SceneReference : IDisposable
+    [Serializable]
+    internal sealed class TimeCountReference
     {
+        [SerializeField]
         private Transform sun;
+
+        [SerializeField]
         private Image clockImage;
 
-        internal SceneReference(Transform sun, Image clockImage)
-        {
-            this.sun = sun;
-            this.clockImage = clockImage;
-        }
-
-        public void Dispose()
-        {
-            sun = null;
-            clockImage = null;
-        }
+        private float sunOfst => SO_Main.Entity.SunRotateOffset;
+        private static readonly Quaternion sunInitRotation = Quaternion.Euler(180, -90, 0);
 
         /// <summary>
         /// p:今何パーセントの時間が進んでいるか [0, 1]
@@ -29,9 +26,8 @@ namespace Data.Main.TimeCount
             if (sun == null) return;
             if (IsPercentageNormalized(p) is false) return;
 
-            // 計算は変更する可能性あり
-            Quaternion q = Quaternion.Euler(0, 0, 180 * p);
-            sun.rotation = q * sun.rotation;
+            Quaternion q = Quaternion.AngleAxis(p.Remap(0, 1, -sunOfst, 180 + sunOfst), Vector3.forward);
+            sun.rotation = q * sunInitRotation;
         }
 
         /// <summary>
@@ -42,7 +38,6 @@ namespace Data.Main.TimeCount
             if (clockImage == null) return;
             if (IsPercentageNormalized(p) is false) return;
 
-            // 計算は変更する可能性あり
             clockImage.fillAmount = p;
         }
 

@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using Data.Title.TitleImage;
 using DG.Tweening;
 using Interface;
-using Reference.Title.TitleImage;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading;

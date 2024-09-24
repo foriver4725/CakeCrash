@@ -11,10 +11,7 @@ namespace Manager.Main
         internal State State { get; set; }
         internal Flag Flag { get; private set; }
 
-        /// <summary>
-        /// OnStart()より前に呼ぶ
-        /// </summary>
-        internal void OnInit()
+        private void Awake()
         {
             if (Instance == null) Instance = this;
             else Destroy(gameObject);

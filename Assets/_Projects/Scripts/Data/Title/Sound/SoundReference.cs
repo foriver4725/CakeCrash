@@ -2,7 +2,7 @@ using General;
 using System;
 using UnityEngine;
 
-namespace Reference.Title.Sound
+namespace Data.Title.Sound
 {
     [Serializable]
     internal sealed class AudioSourceReference

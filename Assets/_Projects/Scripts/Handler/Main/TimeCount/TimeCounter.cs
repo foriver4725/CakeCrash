@@ -24,9 +24,9 @@ namespace Handler.Main.TimeCount
         private float t = 0;
         private readonly float maxT;
 
-        private SceneReference reference;
+        private TimeCountReference reference;
 
-        internal TimeCounter(SceneReference reference, float maxT)
+        internal TimeCounter(TimeCountReference reference, float maxT)
         {
             this.reference = reference;
             this.maxT = maxT;
@@ -38,7 +38,7 @@ namespace Handler.Main.TimeCount
         {
             if (isBeingCleared is true) return;
 
-            if (t >= maxT) UpdateClearFlag();
+            if (t >= maxT) StopOnce();
             else
             {
                 t += Time.deltaTime;
@@ -50,14 +50,16 @@ namespace Handler.Main.TimeCount
 
         public void Dispose()
         {
-            reference.Dispose();
             reference = null;
         }
 
-        internal void UpdateClearFlag()
+        internal void StopOnce()
         {
             if (isBeingClearable is false) return;
             isBeingCleared = true;
+
+            reference.SetSunRotation(1);
+            reference.SetClockFillAmount(1);
         }
     }
 }

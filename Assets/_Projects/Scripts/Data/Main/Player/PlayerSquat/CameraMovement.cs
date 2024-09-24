@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Data.Main.Player.PlayerSquat
 {
-    internal sealed class SceneReference : IDisposable
+    internal sealed class CameraMovement : IDisposable
     {
         private Transform cameraTf;
         private AudioSource squatSE;
@@ -28,14 +28,28 @@ namespace Data.Main.Player.PlayerSquat
             }
         }
 
+        internal float CameraLocalRotateX
+        {
+            get
+            {
+                if (cameraTf == null) return 0;
+                return cameraTf.localRotation.x;
+            }
+            set
+            {
+                if (cameraTf == null) return;
+                cameraTf.localRotation = Quaternion.Euler(value, 0, 0);
+            }
+        }
+
         private CancellationTokenSource ctsOnDispose;
         private CancellationTokenSource ctsAnyTime;
 
-        internal SceneReference(Transform cameraTf, AudioSource squatSE, AudioSource standupSE)
+        internal CameraMovement(CameraReference cameraReference)
         {
-            this.cameraTf = cameraTf;
-            this.squatSE = squatSE;
-            this.standupSE = standupSE;
+            this.cameraTf = cameraReference.CameraTf;
+            this.squatSE = cameraReference.SquatSE;
+            this.standupSE = cameraReference.StandupSE;
 
             ctsOnDispose = new();
             ctsAnyTime = new();
@@ -44,24 +58,26 @@ namespace Data.Main.Player.PlayerSquat
         /// <summary>
         /// カメラを、新しく動き出させ始める
         /// </summary>
-        internal void NewlyMove(float endY, float dur)
+        internal void NewlyMove(float endY, float endRx, float dur)
         {
             if (cameraTf == null) return;
-            if (cameraTf.transform.localPosition.y == endY) return;
 
             ctsAnyTime.Cancel();
             ctsAnyTime.Dispose();
             ctsAnyTime = new();
 
-            Move(endY, dur,
+            Move(endY, endRx, dur,
                 CancellationTokenSource.CreateLinkedTokenSource(ctsOnDispose.Token, ctsAnyTime.Token).Token).Forget();
         }
 
-        private async UniTask Move(float endY, float dur, CancellationToken ct)
+        private async UniTask Move(float endY, float endRx, float dur, CancellationToken ct)
         {
             if (cameraTf == null) return;
 
-            await cameraTf.DOMoveY(endY, dur).ToUniTask(cancellationToken: ct);
+            await UniTask.WhenAll(
+                cameraTf.DOMoveY(endY, dur).ToUniTask(cancellationToken: ct),
+                cameraTf.DORotate(new(endRx, 0, 0), dur).ToUniTask(cancellationToken: ct)
+                );
         }
 
         /// <summary>

@@ -7,17 +7,17 @@ using Manager.Main;
 
 namespace Handler.Main.Player.PlayerSquat
 {
-    internal sealed class PlayerSquat : IDisposable, INullExistable, IEventable
+    internal sealed class PlayerSquatter : IDisposable, INullExistable, IEventable
     {
-        private SceneReference reference;
+        private CameraMovement cameraMovement;
         private Property property;
 
         private bool preInput = false, input = false;  // 入力の監視フラグ
         private bool preEnable = true, enable = true;  // 入力可否の監視フラグ
 
-        internal PlayerSquat(SceneReference reference, Property property)
+        internal PlayerSquatter(CameraMovement cameraMovement, Property property)
         {
-            this.reference = reference;
+            this.cameraMovement = cameraMovement;
             this.property = property;
         }
 
@@ -25,7 +25,7 @@ namespace Handler.Main.Player.PlayerSquat
         {
             if (IsNullExist()) return;
 
-            reference.CameraLocalY = property.Sy;
+            cameraMovement.CameraLocalY = property.Sy;
         }
 
         public void Update()
@@ -63,8 +63,10 @@ namespace Handler.Main.Player.PlayerSquat
             preEnable = enable;
         }
 
-        private void NewlyMoveUp() => reference.NewlyMove(property.Sy, CalcDur(reference.CameraLocalY, false));
-        private void NewlyMoveDown() => reference.NewlyMove(property.Ey, CalcDur(reference.CameraLocalY, true));
+        private void NewlyMoveUp()
+            => cameraMovement.NewlyMove(property.Sy, property.Srx, CalcDur(cameraMovement.CameraLocalY, false));
+        private void NewlyMoveDown()
+            => cameraMovement.NewlyMove(property.Ey, property.Erx, CalcDur(cameraMovement.CameraLocalY, true));
 
         /// <summary>
         /// 現在の、カメラのローカルy座標を基に、目的座標までの移動時間を計算する
@@ -77,15 +79,15 @@ namespace Handler.Main.Player.PlayerSquat
 
         public void Dispose()
         {
-            reference.Dispose();
+            cameraMovement.Dispose();
 
-            reference = null;
+            cameraMovement = null;
             property = null;
         }
 
         public bool IsNullExist()
         {
-            if (reference == null) return true;
+            if (cameraMovement == null) return true;
             if (property == null) return true;
 
             return false;
