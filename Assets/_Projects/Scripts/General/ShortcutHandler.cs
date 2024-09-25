@@ -49,7 +49,7 @@ namespace General
                 if (gameStates.Count <= 1) return;
                 foreach (var e in gameStates) if (e is null) return;
 
-                gameStates[GameState.Index++].Apply();
+                gameStates[GameState.LoopedIndex++].Apply();
             }
             else if (input.Shortcut_TriggerDebugInfoDisplayClick.Bool)
             {

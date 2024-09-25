@@ -25,10 +25,16 @@ namespace Data.General
 
         private static int length => SO_GameState.Entity.GameStates?.Count ?? 0;
         private static int index = 0;
-        internal static int Index
+        internal static int LoopedIndex
         {
             get { return index; }
-            set { index = value % length; }
+            set
+            {
+                int val = value;
+                while (val >= length) val -= length;
+                while (val < 0) val += length;
+                index = val;
+            }
         }
     }
 
@@ -93,7 +99,7 @@ namespace Data.General
             if (gameStates is null) return;
             foreach (var e in gameStates) if (e is null) return;
 
-            gameStates[GameState.Index].Apply();
+            gameStates[GameState.LoopedIndex].Apply();
         }
     }
 }
