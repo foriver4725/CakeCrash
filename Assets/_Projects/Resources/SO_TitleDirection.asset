@@ -15,4 +15,7 @@ MonoBehaviour:
   titleImageChangeProperty:
     changeIntervalSeconds: 10
     changeDurationSeconds: 3
+  startImageProperty:
+    lightStep: 6
+    lightDuration: 0.5
   waitDurOnPlaced: 0.5
