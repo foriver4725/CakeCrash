@@ -99,6 +99,7 @@ namespace Data.General
             if (gameStates is null) return;
             foreach (var e in gameStates) if (e is null) return;
 
+            GameState.LoopedIndex = 0;
             gameStates[GameState.LoopedIndex].Apply();
         }
     }
