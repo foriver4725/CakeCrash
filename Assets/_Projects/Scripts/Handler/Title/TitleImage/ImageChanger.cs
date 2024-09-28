@@ -12,12 +12,12 @@ namespace Handler.Title.TitleImage
 {
     internal sealed class TitleImageChanger : IDisposable, IEventable
     {
-        private ImageReference reference;
+        private TitleImageReference reference;
         private TitleImageChangeProperty property;
         private CancellationTokenSource cts;
 
         internal TitleImageChanger
-            (ImageReference reference, TitleImageChangeProperty property)
+            (TitleImageReference reference, TitleImageChangeProperty property)
         {
             this.reference = reference;
             this.property = property;

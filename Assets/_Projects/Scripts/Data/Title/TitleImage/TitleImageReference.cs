@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace Data.Title.TitleImage
 {
     [Serializable]
-    internal sealed class ImageReference
+    internal sealed class TitleImageReference
     {
         [SerializeField, Header("タイトル画像(表示する順)")]
         private Image[] titleImages;

@@ -30,6 +30,10 @@ namespace SO
         private TitleImageChangeProperty titleImageChangeProperty;
         internal TitleImageChangeProperty TitleImageChangeProperty => titleImageChangeProperty;
 
+        [SerializeField, Header("スタートボタンの切り替わり")]
+        private StartImageProperty startImageProperty;
+        internal StartImageProperty StartImageProperty => startImageProperty;
+
         [SerializeField, Range(+0.0f, 1.0f), Header("ボタンを押した後、何秒待つか")]
         private float waitDurOnPlaced;
         internal float WaitDurOnPlaced => waitDurOnPlaced;

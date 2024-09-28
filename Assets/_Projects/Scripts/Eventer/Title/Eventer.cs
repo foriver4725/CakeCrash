@@ -11,13 +11,15 @@ namespace Eventer.Title
 {
     internal sealed class Eventer : MonoBehaviour
     {
-        [SerializeField] ImageReference imageReference;
-        [SerializeField] AudioSourceReference audioSourceReference;
+        [SerializeField] private TitleImageReference imageReference;
+        [SerializeField] private StartImageReference startImageReference;
+        [SerializeField] private AudioSourceReference audioSourceReference;
 
         private SoundReference soundReference;
 
         private InputHandler inputHandler;
         private TitleImageChanger titleImageChanger;
+        private StartImageChanger startImageChanger;
         private BGMPlayer bgmPlayer;
 
         private bool isFirstUpdate = true;
@@ -29,6 +31,7 @@ namespace Eventer.Title
 
             inputHandler = new(soundReference.PlayClickSE, SO_TitleDirection.Entity.WaitDurOnPlaced);
             titleImageChanger = new(imageReference, SO_TitleDirection.Entity.TitleImageChangeProperty);
+            startImageChanger = new(startImageReference, SO_TitleDirection.Entity.StartImageProperty);
             bgmPlayer = new(soundReference.PlayBGM);
         }
 
@@ -41,12 +44,14 @@ namespace Eventer.Title
                 GameManager.Instance.OnStart();
                 inputHandler.Start();
                 titleImageChanger.Start();
+                startImageChanger.Start();
                 bgmPlayer.Start();
             }
 
             GameManager.Instance.OnUpdate();
             inputHandler.Update();
             titleImageChanger.Update();
+            startImageChanger.Update();
             bgmPlayer.Update();
         }
 
@@ -55,14 +60,17 @@ namespace Eventer.Title
             soundReference.Dispose();
             inputHandler.Dispose();
             titleImageChanger.Dispose();
+            startImageChanger.Dispose();
             bgmPlayer.Dispose();
 
             soundReference = null;
             inputHandler = null;
             titleImageChanger = null;
+            startImageChanger = null;
             bgmPlayer = null;
 
             imageReference = null;
+            startImageReference = null;
             audioSourceReference = null;
         }
     }
