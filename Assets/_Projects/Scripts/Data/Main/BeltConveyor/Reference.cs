@@ -1,4 +1,7 @@
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using System;
+using System.Threading;
 using UnityEngine;
 
 namespace Data.Main.BeltConveyor
@@ -6,26 +9,43 @@ namespace Data.Main.BeltConveyor
     [Serializable]
     internal sealed class Reference
     {
-        [SerializeField, Header("ここまで来たら戻す")]
-        private Transform resetPoint;
+        [SerializeField, Header("中心")]
+        private Transform center;
 
-        [SerializeField, Header("ここに戻す")]
-        private Transform destinationPoint;
+        [SerializeField, Header("中心より左")]
+        private Transform left;
 
-        [SerializeField, Header("ベルトコンベアーへの参照")]
-        private Transform[] beltConveyors;
-
-        internal void MoveDelta(float speed)
+        internal async UniTask Move(float d, CancellationToken ct)
         {
-            if (beltConveyors == null) return;
+            float sz = left.localPosition.z;
+            float cz = center.localPosition.z;
+            float ez = 2 * cz - sz;
 
-            foreach (var e in beltConveyors)
+            SetLocalZ(center, cz);
+            SetLocalZ(left, sz);
+
+            while (true)
             {
-                if (e == null) continue;
+                await UniTask.WhenAll(
+                    center.DOLocalMoveZ(ez, d).SetEase(Ease.Linear).ToUniTask(cancellationToken: ct),
+                    left.DOLocalMoveZ(cz, d).SetEase(Ease.Linear).ToUniTask(cancellationToken: ct));
 
-                e.localPosition += e.transform.right * (-speed * Time.deltaTime);
-                if (e.localPosition.z >= resetPoint.localPosition.z) e.localPosition = destinationPoint.localPosition;
+                SetLocalZ(center, sz);
+
+                await UniTask.WhenAll(
+                    center.DOLocalMoveZ(cz, d).SetEase(Ease.Linear).ToUniTask(cancellationToken: ct),
+                    left.DOLocalMoveZ(ez, d).SetEase(Ease.Linear).ToUniTask(cancellationToken: ct));
+
+                SetLocalZ(left, sz);
             }
+        }
+
+        private void SetLocalZ(Transform tf, float z)
+        {
+            if (tf == null) return;
+            Vector3 pos = tf.localPosition;
+            pos.z = z;
+            tf.localPosition = pos;
         }
     }
 }

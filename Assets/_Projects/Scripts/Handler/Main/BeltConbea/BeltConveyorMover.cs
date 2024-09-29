@@ -1,7 +1,8 @@
 using Interface;
 using System;
 using Data.Main.BeltConveyor;
-
+using System.Threading;
+using Cysharp.Threading.Tasks;
 
 namespace Handler.Main.BeltConveyor
 {
@@ -9,27 +10,26 @@ namespace Handler.Main.BeltConveyor
     {
         private Reference reference;
         private Property property;
+        private CancellationTokenSource cts;
 
         internal BeltConveyorMover(Reference reference, Property property)
         {
             this.reference = reference;
             this.property = property;
+            this.cts = new();
         }
 
-        public void Start()
-        {
-            
-        }
-
-        public void Update()
-        {
-            reference.MoveDelta(property.Speed);
-        }
+        public void Start() => reference.Move(property.Duration, cts.Token).Forget();
+        public void Update() { }
 
         public void Dispose()
         {
             reference = null;
             property = null;
+
+            cts.Cancel();
+            cts.Dispose();
+            cts = null;
         }
     }
 }

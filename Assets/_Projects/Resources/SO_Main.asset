@@ -20,3 +20,4 @@ MonoBehaviour:
   sunRotateOffset: 10
   beltConvyorProperty:
     speed: 2
+    duration: 25
