@@ -36,5 +36,9 @@ namespace SO
         [SerializeField, Range(-30.0f, 30.0f), Header("太陽の回転の始点/終点を、何度ずらすか\n(正：昼方向;負：夜方向)")]
         private float sunRotateOffset;
         internal float SunRotateOffset => sunRotateOffset;
+
+        [SerializeField, Header("ベルトコンベア 関連")]
+        private Data.Main.BeltConveyor.Property beltConvyorProperty;
+        internal Data.Main.BeltConveyor.Property BeltConvyorProperty => beltConvyorProperty;
     }
 }

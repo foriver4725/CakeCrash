@@ -193,6 +193,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 26068988}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &27631049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 27631050}
+  m_Layer: 0
+  m_Name: BeltConveyorResetPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &27631050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27631049}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 52.0469}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1747635225}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &49594346
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,37 +998,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 189603309}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &189760936
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 189760937}
-  m_Layer: 0
-  m_Name: BeltConbeaResetPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &189760937
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189760936}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000000059604645, y: -1, z: -52.046898}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1747635225}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &198365974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6612,32 +6612,12 @@ Transform:
   - {fileID: 1363203102}
   m_Father: {fileID: 1834000000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1401255899 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7831942881145890341, guid: 9be25829e60545c42a0f32d073074499,
-    type: 3}
-  m_PrefabInstance: {fileID: 7625036131686597262}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1401255900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5569009171627779415, guid: 9be25829e60545c42a0f32d073074499,
     type: 3}
   m_PrefabInstance: {fileID: 7625036131686597262}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1401255903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1401255899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dca47c8a790fb749a5b22e4e1fea0bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  resetPoint: {fileID: 189760937}
 --- !u!1 &1413733225
 GameObject:
   m_ObjectHideFlags: 0
@@ -8326,32 +8306,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1805355651}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1833999999 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7234999891868372160, guid: 9be25829e60545c42a0f32d073074499,
-    type: 3}
-  m_PrefabInstance: {fileID: 7625036131686597262}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1834000000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8830343584366675800, guid: 9be25829e60545c42a0f32d073074499,
     type: 3}
   m_PrefabInstance: {fileID: 7625036131686597262}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1834000003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833999999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dca47c8a790fb749a5b22e4e1fea0bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  resetPoint: {fileID: 189760937}
 --- !u!1001 &1834874264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9629,6 +9589,12 @@ MonoBehaviour:
     cameraTf: {fileID: 1068397237}
     squatSE: {fileID: 2019619323}
     standupSE: {fileID: 852921121}
+  beltConveyorReference:
+    resetPoint: {fileID: 27631050}
+    destinationPoint: {fileID: 2128137043}
+    beltConveyors:
+    - {fileID: 1401255900}
+    - {fileID: 1834000000}
 --- !u!1 &2105476162
 GameObject:
   m_ObjectHideFlags: 0
@@ -9662,6 +9628,37 @@ Transform:
   - {fileID: 117133656}
   - {fileID: 1834874265}
   m_Father: {fileID: 1401255900}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2128137042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2128137043}
+  m_Layer: 0
+  m_Name: BeltConveyorDestinationPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2128137043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128137042}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.000000059604645, y: -1, z: -52.046898}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1747635225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2135193393
 PrefabInstance:
@@ -9824,6 +9821,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7234999891868372160, guid: 9be25829e60545c42a0f32d073074499,
+        type: 3}
+      propertyPath: m_Name
+      value: BeltConveyor_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7831942881145890341, guid: 9be25829e60545c42a0f32d073074499,
+        type: 3}
+      propertyPath: m_Name
+      value: BeltConveyor_1
+      objectReference: {fileID: 0}
     - target: {fileID: 8228745290944786777, guid: 9be25829e60545c42a0f32d073074499,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9885,7 +9892,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8228745290944786777, guid: 9be25829e60545c42a0f32d073074499,
         type: 3}
       insertIndex: 2
-      addedObject: {fileID: 189760937}
+      addedObject: {fileID: 27631050}
+    - targetCorrespondingSourceObject: {fileID: 8228745290944786777, guid: 9be25829e60545c42a0f32d073074499,
+        type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 2128137043}
     - targetCorrespondingSourceObject: {fileID: 5569009171627779415, guid: 9be25829e60545c42a0f32d073074499,
         type: 3}
       insertIndex: -1
@@ -10026,15 +10037,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1964946636}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7831942881145890341, guid: 9be25829e60545c42a0f32d073074499,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1401255903}
-    - targetCorrespondingSourceObject: {fileID: 7234999891868372160, guid: 9be25829e60545c42a0f32d073074499,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1834000003}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9be25829e60545c42a0f32d073074499, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

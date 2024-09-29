@@ -18,3 +18,5 @@ MonoBehaviour:
     y: {x: -1.55, y: -3.5}
     rx: {x: 7, y: -10}
   sunRotateOffset: 10
+  beltConvyorProperty:
+    speed: 2
