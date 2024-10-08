@@ -1,9 +1,8 @@
-using System;
+ï»¿using System;
 using IA;
 using Interface;
 using UnityEngine;
 using Data.Title.Tutorial;
-using Manager.Title;
 
 namespace Handler.Title.Tutorial
 {
@@ -14,29 +13,25 @@ namespace Handler.Title.Tutorial
         internal TutorialPlayer(RefPro refPro) => this.refPro = refPro;
 
         private float timer = 0;
-        private bool isRed => InputGetter.Instance.Main_RedClick.Bool;
         private bool isGreen => InputGetter.Instance.Main_GreenClick.Bool;
         private bool isBlue => InputGetter.Instance.Main_BlueClick.Bool;
-        private bool isAnyColor => isRed | isBlue | isGreen;
+        private bool isAnyColor => isBlue | isGreen;
         private bool isVideoActive
         {
             set
             {
-                if (refPro.Video == null)  return;
+                if (refPro.Video == null) return;
                 refPro.Video.gameObject.SetActive(value);
             }
         }
 
         public void Start() { }
 
-        public void Update() 
+        public void Update()
         {
-            GameManager.Instance.IsVideoJustDeactivate = false;
-
-            // ‰½‚©‰Ÿ‚³‚ê‚½‚çŠÔ‚ğƒŠƒZƒbƒg
+            // ä½•ã‹æŠ¼ã•ã‚ŒãŸã‚‰æ™‚é–“ã‚’ãƒªã‚»ãƒƒãƒˆ
             if (isAnyColor)
             {
-                GameManager.Instance.IsVideoJustDeactivate = true;
                 timer = 0;
             }
             else if (timer < refPro.DisplayStartTime)
@@ -44,8 +39,8 @@ namespace Handler.Title.Tutorial
                 timer += Time.deltaTime;
             }
 
-            // ‰½‚à‰Ÿ‚µ‚Ä‚¢‚È‚¢ŠÔ‚ª‚µ‚«‚¢’l‚ğ’´‚¦‚½‚ç•\¦‚·‚é 
-            // SetActive‚µ‚Ä‚é‚¾‚¯
+            // ä½•ã‚‚æŠ¼ã—ã¦ã„ãªã„æ™‚é–“ãŒã—ãã„å€¤ã‚’è¶…ãˆãŸã‚‰è¡¨ç¤ºã™ã‚‹ 
+            // SetActiveã—ã¦ã‚‹ã ã‘
             isVideoActive = (timer >= refPro.DisplayStartTime);
         }
 

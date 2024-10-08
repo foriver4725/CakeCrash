@@ -11,8 +11,6 @@ namespace Manager.Title
         /// </summary>
         internal bool IsInputAvailable = true;
 
-        internal bool IsVideoJustDeactivate = false;
-
         private void Awake()
         {
             if (Instance == null) Instance = this;
@@ -32,7 +30,7 @@ namespace Manager.Title
         /// </summary>
         internal void OnUpdate()
         {
-            
+
         }
 
         private void OnDisable()
