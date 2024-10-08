@@ -16,7 +16,7 @@ namespace Handler.Title.Input
 
         private bool isAvailable
         {
-            get { return GameManager.Instance.IsInputAvailable && !GameManager.Instance.IsVideoJustDeactivate; }
+            get { return GameManager.Instance.IsInputAvailable; }
             set { GameManager.Instance.IsInputAvailable = value; }
         }
         private bool isStart => InputGetter.Instance.Main_RedClick.Bool;

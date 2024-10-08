@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +7,9 @@ namespace Data.Title.Tutorial
     [Serializable]
     internal sealed class RefPro
     {
-        [SerializeField, Range(1f, 60f), Header("•\Ž¦‚·‚é‚Ü‚Å‚ÌŽžŠÔ")]
+        [SerializeField, Range(1f, 60f), Header("è¡¨ç¤ºã™ã‚‹ã¾ã§ã®æ™‚é–“")]
         private float displayStartTime;
-        [SerializeField, Header("•\Ž¦‚·‚é“®‰æ,Canvas‚ÌŽqƒIƒuƒWƒFƒNƒg")]
+        [SerializeField, Header("è¡¨ç¤ºã™ã‚‹å‹•ç”»,Canvasã®å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ")]
         private Image video;
 
         internal float DisplayStartTime => displayStartTime;
