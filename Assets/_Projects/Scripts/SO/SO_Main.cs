@@ -40,5 +40,9 @@ namespace SO
         [SerializeField, Header("ベルトコンベア 関連")]
         private Data.Main.BeltConveyor.Property beltConvyorProperty;
         internal Data.Main.BeltConveyor.Property BeltConvyorProperty => beltConvyorProperty;
+
+        [SerializeField, Header("ハンマー 関連")]
+        private Data.Main.Hammer.Property hammerProperty;
+        internal Data.Main.Hammer.Property HammerProperty => hammerProperty;
     }
 }
