@@ -4,8 +4,10 @@ using Handler.Title.TitleImage;
 using Manager.Title;
 using Data.Title.Sound;
 using Data.Title.TitleImage;
+using Data.Title.Tutorial;
 using SO;
 using UnityEngine;
+using Handler.Title.Tutorial;
 
 namespace Eventer.Title
 {
@@ -14,12 +16,14 @@ namespace Eventer.Title
         [SerializeField] private TitleImageReference imageReference;
         [SerializeField] private StartImageReference startImageReference;
         [SerializeField] private AudioSourceReference audioSourceReference;
+        [SerializeField] private RefPro refPro;
 
         private SoundReference soundReference;
 
         private InputHandler inputHandler;
         private TitleImageChanger titleImageChanger;
         private StartImageChanger startImageChanger;
+        private TutorialPlayer tutorialPlayer;
         private BGMPlayer bgmPlayer;
 
         private bool isFirstUpdate = true;
@@ -32,6 +36,7 @@ namespace Eventer.Title
             inputHandler = new(soundReference.PlayClickSE, SO_TitleDirection.Entity.WaitDurOnPlaced);
             titleImageChanger = new(imageReference, SO_TitleDirection.Entity.TitleImageChangeProperty);
             startImageChanger = new(startImageReference, SO_TitleDirection.Entity.StartImageProperty);
+            tutorialPlayer = new(refPro);
             bgmPlayer = new(soundReference.PlayBGM);
         }
 
@@ -42,6 +47,7 @@ namespace Eventer.Title
                 isFirstUpdate = false;
 
                 GameManager.Instance.OnStart();
+                tutorialPlayer.Start();
                 inputHandler.Start();
                 titleImageChanger.Start();
                 startImageChanger.Start();
@@ -49,6 +55,7 @@ namespace Eventer.Title
             }
 
             GameManager.Instance.OnUpdate();
+            tutorialPlayer.Update();
             inputHandler.Update();
             titleImageChanger.Update();
             startImageChanger.Update();
@@ -61,17 +68,20 @@ namespace Eventer.Title
             inputHandler.Dispose();
             titleImageChanger.Dispose();
             startImageChanger.Dispose();
+            tutorialPlayer.Dispose();
             bgmPlayer.Dispose();
 
             soundReference = null;
             inputHandler = null;
             titleImageChanger = null;
             startImageChanger = null;
+            tutorialPlayer = null;
             bgmPlayer = null;
 
             imageReference = null;
             startImageReference = null;
             audioSourceReference = null;
+            refPro = null;
         }
     }
 }
