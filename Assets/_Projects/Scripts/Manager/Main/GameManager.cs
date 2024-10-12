@@ -50,15 +50,7 @@ namespace Manager.Main
 
     internal sealed class RecentPressedColor
     {
-        private StringBuilder colorName = new StringBuilder();
-
-        internal string GetColor() => colorName.ToString();
-
-        internal void SetColor(string newColorName)
-        {
-            colorName.Clear(); 
-            colorName.Append(newColorName); 
-        }
+        internal string colorType { get; set; } = string.Empty;
     }
 
 
