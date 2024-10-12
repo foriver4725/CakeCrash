@@ -20,8 +20,6 @@ namespace Handler.Main.Hammer
         private bool isBlue => InputGetter.Instance.Main_BlueClick.Bool;
         private bool isGreen => InputGetter.Instance.Main_GreenClick.Bool;
 
-        internal static int RecentButtonColor { get; private set; }//—v‘Š’k
-
         internal HammerMover(Reference reference, Property property)
         {
             this.reference = reference;
@@ -44,14 +42,17 @@ namespace Handler.Main.Hammer
                    UniTask.WaitUntil(() => isGreen, cancellationToken: ct)
                    );
 
-                GameManager.Instance.
-                    RecentPressedColor.SetColor(i switch
-                    {
-                        0 => "Cake/Red",
-                        1 => "Cake/Blue",
-                        2 => "Cake/Green",
-                        _ => throw new ArgumentOutOfRangeException()
-                    });
+                string color = i switch
+                {
+                    0 => "Cake/Red",
+                    1 => "Cake/Blue",
+                    2 => "Cake/Green",
+                    _ => string.Empty
+                };
+
+                if (string.IsNullOrEmpty(color) == false)
+                    GameManager.Instance.RecentPressedColor.colorType = color;
+
 
                 await reference.Rotate
                     (property.Sz, property.Ez, property.Se, property.Ee, property.Duration, property.Ease, ct);

@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c764ee43c4ab34a891505d3ea880d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cakeColor: 2
+  cakeRb: {fileID: -7066790784739376319}
 --- !u!54 &-7066790784739376319
 Rigidbody:
   m_ObjectHideFlags: 0
