@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Hammer/Head
+  - Cake/Red
+  - Cake/Blue
+  - Cake/Green
   layers:
   - Default
   - TransparentFX
@@ -11,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - UnHit
+  - HasHit
   - 
   - 
   - 
