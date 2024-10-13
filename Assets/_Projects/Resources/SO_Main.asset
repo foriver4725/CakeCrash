@@ -26,4 +26,5 @@ MonoBehaviour:
     se: {x: 90, y: 0, z: -90}
     ee: {x: 90, y: 0, z: 90}
     duration: 0.5
+    interval: 0.1
     ease: 13

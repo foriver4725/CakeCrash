@@ -1,4 +1,5 @@
 ﻿using Manager.Main;
+using SO;
 using UnityEngine;
 
 namespace Handler.Main.Cake
@@ -9,18 +10,21 @@ namespace Handler.Main.Cake
     [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
     internal sealed class CakeKnockback : MonoBehaviour
     {
-        private static readonly float knockBackPower = 20f;
+
         [SerializeField, Header("ケーキのリジッドボディ")] Rigidbody cakeRb;
 
         internal void Hit()
         {
-            const float hitboxXmax = 1.8f, hitboxXmin = -1.8f;
-            if (transform.position.x > hitboxXmax || transform.position.x < hitboxXmin) return;
-            const int onHitLayer = 7;
-            gameObject.layer = onHitLayer;
+            float
+                hitboxXmax = SO_Cake.Entity.HitboxXmax,
+                hitboxXmin = SO_Cake.Entity.HitboxXmin;
 
-            if (GameManager.Instance.RecentPressedColor.colorType == tag) 
-                cakeRb.AddForce(new Vector3(-1, 0.5f, 1) * knockBackPower, ForceMode.Impulse);
+            if (transform.position.x > hitboxXmax || transform.position.x < hitboxXmin) return;
+
+            gameObject.layer = SO_Cake.Entity.OnHitLayer;
+
+            if (GameManager.Instance.RecentPressedColor.colorType == tag)
+                cakeRb.AddForce(SO_Cake.Entity.KnockbackVector * SO_Cake.Entity.KnockbackPower, ForceMode.Impulse);
 
             else gameObject.SetActive(false);
 
@@ -28,7 +32,7 @@ namespace Handler.Main.Cake
 
         private void OnDisable()
         {
-           cakeRb = null;
+            cakeRb = null;
         }
     }
 }
