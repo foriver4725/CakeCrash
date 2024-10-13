@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackPower: 20
   knockbackVector: {x: -1, y: 0.5, z: 1}
-  hitboxXmax: 1.8
-  hitboxXmin: -1.8
+  hitboxXmax: 1.6
+  hitboxXmin: -1.6
   onHitLayer: 7
