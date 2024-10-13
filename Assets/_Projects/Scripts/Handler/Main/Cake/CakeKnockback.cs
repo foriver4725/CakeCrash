@@ -18,7 +18,7 @@ namespace Handler.Main.Cake
                 hitboxXmax = SO_Cake.Entity.HitboxXmax,
                 hitboxXmin = SO_Cake.Entity.HitboxXmin;
 
-            if (SO_Cake.Entity.IsOutHitBox(transform.position.x)) return;
+            if (transform.position.x > hitboxXmax || transform.position.x < hitboxXmin) return;
 
             gameObject.layer = SO_Cake.Entity.OnHitLayer;
 
