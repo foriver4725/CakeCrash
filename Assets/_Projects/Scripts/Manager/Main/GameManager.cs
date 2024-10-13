@@ -11,7 +11,7 @@ namespace Manager.Main
         // ゲームの状態とフラグ
         internal State State { get; set; }
         internal Flag Flag { get; private set; }
-        internal RecentPressedColor RecentPressedColor { get; set; }
+        internal PressedColor RecentPressedColor { get; set; }
 
         private void Awake()
         {
@@ -48,7 +48,7 @@ namespace Manager.Main
         }
     }
 
-    internal sealed class RecentPressedColor
+    internal sealed class PressedColor
     {
         internal string colorType { get; set; } = string.Empty;
     }
