@@ -14,9 +14,6 @@ namespace Handler.Main.Cake
 
         internal void Hit()
         {
-            float
-                hitboxXmax = SO_Cake.Entity.HitboxXmax,
-                hitboxXmin = SO_Cake.Entity.HitboxXmin;
 
             if (SO_Cake.Entity.IsOutHitBox(transform.position.x)) return;
 
