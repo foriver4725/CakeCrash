@@ -7,7 +7,6 @@ namespace Handler.Main.Cake
     /// <summary>
     /// ケーキの吹っ飛び
     /// </summary>
-    [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
     internal sealed class CakeKnockback : MonoBehaviour
     {
 
