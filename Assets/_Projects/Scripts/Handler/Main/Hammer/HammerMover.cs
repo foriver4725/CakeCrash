@@ -57,6 +57,8 @@ namespace Handler.Main.Hammer
                 await reference.Rotate
                     (property.Sz, property.Ez, property.Se, property.Ee, property.Duration, property.Ease, ct);
 
+                GameManager.Instance.RecentPressedColor.colorType = string.Empty;
+
                 await UniTask.Delay(TimeSpan.FromSeconds(property.Interval), cancellationToken: ct);
             }
         }
