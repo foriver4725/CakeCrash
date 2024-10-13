@@ -14,39 +14,44 @@ namespace Eventer.Main
         [SerializeField, Header("ハンマー 関連")]
         private Data.Main.Hammer.Reference hammerReference;
 
+        private IReference[] datas;
         private IHandler[] handlers;
+        private IManager manager => Manager.Main.GameManager.Instance;
 
-        private bool isFirstUpdate = true;
+        private SO.SO_Main SMain => SO.SO_Main.Entity;
+
+        public bool IsFirstUpdate { get; private set; } = true;
 
         private void OnEnable()
         {
+            datas = new IReference[]
+            {
+                timeCountReference,
+                cameraReference,
+                beltConveyorReference,
+                hammerReference
+            };
+
             handlers = new IHandler[]
             {
-                new Handler.Main.TimeCount.TimeCounter
-                (timeCountReference, SO.SO_Main.Entity.TimeLimit),
-
-                new Handler.Main.Player.PlayerSquat.PlayerSquatter
-                (new(cameraReference), SO.SO_Main.Entity.CameraProperty),
-
-                new Handler.Main.BeltConveyor.BeltConveyorMover
-                (beltConveyorReference, SO.SO_Main.Entity.BeltConvyorProperty),
-
-                new Handler.Main.Hammer.HammerMover
-                (hammerReference, SO.SO_Main.Entity.HammerProperty)
+                new Handler.Main.TimeCount.TimeCounter(timeCountReference, SMain.TimeLimit),
+                new Handler.Main.Player.PlayerSquat.PlayerSquatter(new(cameraReference), SMain.CameraProperty),
+                new Handler.Main.BeltConveyor.BeltConveyorMover(beltConveyorReference, SMain.BeltConvyorProperty),
+                new Handler.Main.Hammer.HammerMover(hammerReference, SMain.HammerProperty)
             };
         }
 
         private void Update()
         {
-            if (isFirstUpdate)
+            if (IsFirstUpdate)
             {
-                isFirstUpdate = false;
+                IsFirstUpdate = false;
 
-                Manager.Main.GameManager.Instance.OnStart();
+                manager.OnStart();
                 foreach (IHandler handler in handlers) handler.Start();
             }
 
-            Manager.Main.GameManager.Instance.OnUpdate();
+            manager.OnUpdate();
             foreach (IHandler handler in handlers) handler.Update();
         }
 
@@ -56,10 +61,9 @@ namespace Eventer.Main
             System.Array.Clear(handlers, 0, handlers.Length);
             handlers = null;
 
-            (timeCountReference as IReference)?.Dispose();
-            (cameraReference as IReference)?.Dispose();
-            (beltConveyorReference as IReference)?.Dispose();
-            (hammerReference as IReference)?.Dispose();
+            foreach (IReference data in datas) data.Dispose();
+            System.Array.Clear(datas, 0, datas.Length);
+            datas = null;
 
             timeCountReference = null;
             cameraReference = null;
