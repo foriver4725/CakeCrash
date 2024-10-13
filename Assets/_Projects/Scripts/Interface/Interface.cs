@@ -25,5 +25,8 @@
         IFlag Flag { get; }
     }
 
-    public interface IEventer { }
+    public interface IEventer
+    {
+        bool IsFirstUpdate { get; }
+    }
 }

@@ -11,42 +11,47 @@ namespace Eventer.Title
 
         private Data.Title.Sound.SoundReference soundReference;
 
+        private IReference[] datas;
         private IHandler[] handlers;
+        private IManager manager => Manager.Title.GameManager.Instance;
 
-        private bool isFirstUpdate = true;
+        private SO.SO_Sound SSound => SO.SO_Sound.Entity;
+        private SO.SO_TitleDirection SDir => SO.SO_TitleDirection.Entity;
+
+        public bool IsFirstUpdate { get; private set; } = true;
 
         private void OnEnable()
         {
-            soundReference = new Data.Title.Sound.SoundReference
-                (audioSourceReference, new(SO.SO_Sound.Entity.BGM.Title, SO.SO_Sound.Entity.SE.General.Click));
+            soundReference = new(audioSourceReference, new(SSound.BGM.Title, SSound.SE.General.Click));
+
+            datas = new IReference[]
+            {
+                startImageReference,
+                audioSourceReference,
+                refPro,
+                soundReference
+            };
 
             handlers = new IHandler[]
             {
-                new Handler.Title.Tutorial.TutorialPlayer
-                (refPro),
-
-                new Handler.Title.Input.InputHandler
-                (soundReference.PlayClickSE, SO.SO_TitleDirection.Entity.WaitDurOnPlaced),
-
-                new Handler.Title.TitleImage.StartImageChanger
-                (startImageReference, SO.SO_TitleDirection.Entity.StartImageProperty),
-
-                new Handler.Title.Sound.BGMPlayer
-                (soundReference.PlayBGM)
+                new Handler.Title.Tutorial.TutorialPlayer(refPro),
+                new Handler.Title.Input.InputHandler(soundReference.PlayClickSE, SDir.WaitDurOnPlaced),
+                new Handler.Title.TitleImage.StartImageChanger(startImageReference, SDir.StartImageProperty),
+                new Handler.Title.Sound.BGMPlayer(soundReference.PlayBGM)
             };
         }
 
         private void Update()
         {
-            if (isFirstUpdate)
+            if (IsFirstUpdate)
             {
-                isFirstUpdate = false;
+                IsFirstUpdate = false;
 
-                Manager.Title.GameManager.Instance.OnStart();
+                manager.OnStart();
                 foreach (IHandler handler in handlers) handler.Start();
             }
 
-            Manager.Title.GameManager.Instance.OnUpdate();
+            manager.OnUpdate();
             foreach (IHandler handler in handlers) handler.Update();
         }
 
@@ -56,10 +61,9 @@ namespace Eventer.Title
             System.Array.Clear(handlers, 0, handlers.Length);
             handlers = null;
 
-            (startImageReference as IReference)?.Dispose();
-            (audioSourceReference as IReference)?.Dispose();
-            (refPro as IReference)?.Dispose();
-            (soundReference as IReference)?.Dispose();
+            foreach (IReference data in datas) data.Dispose();
+            System.Array.Clear(datas, 0, datas.Length);
+            datas = null;
 
             startImageReference = null;
             audioSourceReference = null;
