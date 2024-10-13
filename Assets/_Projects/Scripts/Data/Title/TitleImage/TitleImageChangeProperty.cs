@@ -1,10 +1,11 @@
+using Interface;
 using System;
 using UnityEngine;
 
 namespace Data.Title.TitleImage
 {
     [Serializable]
-    internal sealed class TitleImageChangeProperty
+    internal sealed class TitleImageChangeProperty : IProperty
     {
         [SerializeField, Header("Ø‚è‘Ö‚í‚è‚ÌŠÔŠu(•b)")]
         private float changeIntervalSeconds = 0;

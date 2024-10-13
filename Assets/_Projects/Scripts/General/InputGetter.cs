@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Interface;
 
 namespace IA
 {
@@ -47,7 +46,7 @@ namespace IA
         Value3
     }
 
-    public sealed class InputInfo : IDisposable, INullExistable
+    public sealed class InputInfo : IDisposable
     {
         private InputAction inputAction;
         private readonly InputType type;
@@ -112,13 +111,6 @@ namespace IA
         {
             inputAction = null;
             action = null;
-        }
-
-        public bool IsNullExist()
-        {
-            if (inputAction == null) return true;
-            if (action == null) return true;
-            return false;
         }
 
         public void Link(bool isLink)

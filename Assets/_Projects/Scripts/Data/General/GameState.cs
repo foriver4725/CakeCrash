@@ -1,10 +1,11 @@
+using Interface;
 using SO;
 using System;
 using UnityEngine;
 
 namespace Data.General
 {
-    internal sealed class GameState
+    internal sealed class GameState : IProperty
     {
         internal Vector2Int Resolution { get; private set; }
         internal bool IsFullScreen { get; private set; }
@@ -39,7 +40,7 @@ namespace Data.General
     }
 
     [Serializable]
-    internal sealed class SerializedGameState
+    internal sealed class SerializedGameState : IProperty
     {
         [SerializeField, Header("‰ð‘œ“x(ex. 1920, 1080)")]
         private Vector2Int resolution;

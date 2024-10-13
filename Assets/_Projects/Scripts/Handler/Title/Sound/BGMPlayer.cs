@@ -3,7 +3,7 @@ using System;
 
 namespace Handler.Title.Sound
 {
-    internal sealed class BGMPlayer : IDisposable, IEventable
+    internal sealed class BGMPlayer : IHandler
     {
         private Action playBGM;
         internal BGMPlayer(Action playBGM) => this.playBGM = playBGM;

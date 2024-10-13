@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace Handler.Title.TitleImage
 {
-    internal sealed class StartImageChanger : IDisposable, IEventable
+    internal sealed class StartImageChanger : IHandler
     {
         private StartImageReference reference;
         private StartImageProperty property;

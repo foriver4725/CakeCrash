@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Interface;
+using System;
 using UnityEngine;
 
 namespace Data.Main.Player.PlayerSquat
 {
     [Serializable]
-    internal sealed class Property
+    internal sealed class Property : IProperty
     {
         [SerializeField, Range(0.1f, 1.0f), Header("何秒かけて変化しきるか")]
         private float duration;

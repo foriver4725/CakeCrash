@@ -1,10 +1,11 @@
+using Interface;
 using System;
 using UnityEngine;
 
 namespace Data.Title.TitleImage
 {
     [Serializable]
-    internal sealed class StartImageProperty
+    internal sealed class StartImageProperty : IProperty
     {
         [SerializeField, Range(1, 10), Header("‰½’iŠK‚É•ª‚¯‚é‚©")]
         private int lightStep;

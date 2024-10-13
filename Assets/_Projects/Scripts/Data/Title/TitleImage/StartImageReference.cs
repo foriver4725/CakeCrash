@@ -1,3 +1,4 @@
+using Interface;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 namespace Data.Title.TitleImage
 {
     [Serializable]
-    internal sealed class StartImageReference
+    internal sealed class StartImageReference : IReference
     {
         [SerializeField, Header("スタートボタンのライト部分")]
         private Image[] lightImages;
@@ -29,5 +30,11 @@ namespace Data.Title.TitleImage
         /// lightImage.fillAmountを0で初期化する
         /// </summary>
         internal void InitLightImagesFillAmount() => SetLightImagesFillAmount(0, 1);
+
+        public void Dispose()
+        {
+            Array.Clear(lightImages, 0, lightImages.Length);
+            lightImages = null;
+        }
     }
 }

@@ -1,11 +1,12 @@
 using General;
+using Interface;
 using System;
 using UnityEngine;
 
 namespace Data.Title.Sound
 {
     [Serializable]
-    internal sealed class AudioSourceReference
+    internal sealed class AudioSourceReference : IReference
     {
         [SerializeField]
         private AudioSource bgm;
@@ -14,9 +15,15 @@ namespace Data.Title.Sound
         [SerializeField]
         private AudioSource clickSE;
         internal AudioSource ClickSE => clickSE;
+
+        public void Dispose()
+        {
+            bgm = null;
+            clickSE = null;
+        }
     }
 
-    internal sealed class AudioClipReference : IDisposable
+    internal sealed class AudioClipReference : IReference
     {
         internal AudioClip BGM { get; private set; }
         internal AudioClip ClickSE { get; private set; }
@@ -34,7 +41,7 @@ namespace Data.Title.Sound
         }
     }
 
-    internal sealed class SoundReference : IDisposable
+    internal sealed class SoundReference : IReference
     {
         private AudioSourceReference audioSources;
         private AudioClipReference audioClips;
@@ -50,7 +57,8 @@ namespace Data.Title.Sound
 
         public void Dispose()
         {
-            audioClips.Dispose();
+            (audioSources as IReference)?.Dispose();
+            (audioClips as IReference)?.Dispose();
 
             audioSources = null;
             audioClips = null;

@@ -7,7 +7,7 @@ using Manager.Main;
 
 namespace Handler.Main.Player.PlayerSquat
 {
-    internal sealed class PlayerSquatter : IDisposable, INullExistable, IEventable
+    internal sealed class PlayerSquatter : IHandler
     {
         private CameraMovement cameraMovement;
         private Property property;
@@ -23,18 +23,14 @@ namespace Handler.Main.Player.PlayerSquat
 
         public void Start()
         {
-            if (IsNullExist()) return;
-
             cameraMovement.CameraLocalY = property.Sy;
         }
 
         public void Update()
         {
-            if (IsNullExist()) return;
-
             // 負荷軽減のため、動きが変化した瞬間のみを捉え、新しく動かさせ始める
 
-            try { enable = GameManager.Instance.Flag.IsSquattable; }
+            try { enable = (GameManager.Instance.Flag as Flag).IsSquattable; }
             catch (NullReferenceException) { return; }
 
             // 無効になった瞬間
@@ -83,14 +79,6 @@ namespace Handler.Main.Player.PlayerSquat
 
             cameraMovement = null;
             property = null;
-        }
-
-        public bool IsNullExist()
-        {
-            if (cameraMovement == null) return true;
-            if (property == null) return true;
-
-            return false;
         }
     }
 }

@@ -6,7 +6,7 @@ using Cysharp.Threading.Tasks;
 
 namespace Handler.Main.BeltConveyor
 {
-    internal sealed class BeltConveyorMover : IDisposable, IEventable
+    internal sealed class BeltConveyorMover : IHandler
     {
         private Reference reference;
         private Property property;

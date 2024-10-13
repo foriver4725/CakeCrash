@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Interface;
+using UnityEngine;
 
 namespace Manager.Title
 {
-    internal sealed class GameManager : MonoBehaviour
+    internal sealed class GameManager : MonoBehaviour, IManager
     {
-        internal static GameManager Instance { get; set; } = null;
+        public static GameManager Instance { get; set; } = null;
 
         /// <summary>
         /// 全ての入力を受け付けるかどうか
@@ -16,23 +17,8 @@ namespace Manager.Title
             if (Instance == null) Instance = this;
             else Destroy(gameObject);
         }
-
-        /// <summary>
-        /// Start()で一番最初に呼ぶ
-        /// </summary>
-        internal void OnStart()
-        {
-
-        }
-
-        /// <summary>
-        /// Update()で一番最初に呼ぶ
-        /// </summary>
-        internal void OnUpdate()
-        {
-
-        }
-
+        public void OnStart() { }
+        public void OnUpdate() { }
         private void OnDisable()
         {
             Instance = null;

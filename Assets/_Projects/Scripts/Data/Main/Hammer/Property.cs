@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Interface;
+using System;
 using UnityEngine;
 
 namespace Data.Main.Hammer
 {
     [Serializable]
-    internal sealed class Property
+    internal sealed class Property : IProperty
     {
         [SerializeField, Header("ハンマーの前者ローカルz座標")]
         private float sz;

@@ -1,40 +1,39 @@
-﻿using Handler.Title.Input;
-using Handler.Title.Sound;
-using Handler.Title.TitleImage;
-using Manager.Title;
-using Data.Title.Sound;
-using Data.Title.TitleImage;
-using Data.Title.Tutorial;
-using SO;
+﻿using Interface;
 using UnityEngine;
-using Handler.Title.Tutorial;
 
 namespace Eventer.Title
 {
-    internal sealed class Eventer : MonoBehaviour
+    internal sealed class Eventer : MonoBehaviour, IEventer
     {
-        [SerializeField] private StartImageReference startImageReference;
-        [SerializeField] private AudioSourceReference audioSourceReference;
-        [SerializeField] private RefPro refPro;
+        [SerializeField] private Data.Title.TitleImage.StartImageReference startImageReference;
+        [SerializeField] private Data.Title.Sound.AudioSourceReference audioSourceReference;
+        [SerializeField] private Data.Title.Tutorial.RefPro refPro;
 
-        private SoundReference soundReference;
+        private Data.Title.Sound.SoundReference soundReference;
 
-        private TutorialPlayer tutorialPlayer;
-        private InputHandler inputHandler;
-        private StartImageChanger startImageChanger;
-        private BGMPlayer bgmPlayer;
+        private IHandler[] handlers;
 
         private bool isFirstUpdate = true;
 
         private void OnEnable()
         {
-            AudioClipReference audioClipReference = new(SO_Sound.Entity.BGM.Title, SO_Sound.Entity.SE.General.Click);
-            soundReference = new SoundReference(audioSourceReference, audioClipReference);
+            soundReference = new Data.Title.Sound.SoundReference
+                (audioSourceReference, new(SO.SO_Sound.Entity.BGM.Title, SO.SO_Sound.Entity.SE.General.Click));
 
-            tutorialPlayer = new(refPro);
-            inputHandler = new(soundReference.PlayClickSE, SO_TitleDirection.Entity.WaitDurOnPlaced);
-            startImageChanger = new(startImageReference, SO_TitleDirection.Entity.StartImageProperty);
-            bgmPlayer = new(soundReference.PlayBGM);
+            handlers = new IHandler[]
+            {
+                new Handler.Title.Tutorial.TutorialPlayer
+                (refPro),
+
+                new Handler.Title.Input.InputHandler
+                (soundReference.PlayClickSE, SO.SO_TitleDirection.Entity.WaitDurOnPlaced),
+
+                new Handler.Title.TitleImage.StartImageChanger
+                (startImageReference, SO.SO_TitleDirection.Entity.StartImageProperty),
+
+                new Handler.Title.Sound.BGMPlayer
+                (soundReference.PlayBGM)
+            };
         }
 
         private void Update()
@@ -43,37 +42,29 @@ namespace Eventer.Title
             {
                 isFirstUpdate = false;
 
-                GameManager.Instance.OnStart();
-                tutorialPlayer.Start();
-                inputHandler.Start();
-                startImageChanger.Start();
-                bgmPlayer.Start();
+                Manager.Title.GameManager.Instance.OnStart();
+                foreach (IHandler handler in handlers) handler.Start();
             }
 
-            GameManager.Instance.OnUpdate();
-            tutorialPlayer.Update();
-            inputHandler.Update();
-            startImageChanger.Update();
-            bgmPlayer.Update();
+            Manager.Title.GameManager.Instance.OnUpdate();
+            foreach (IHandler handler in handlers) handler.Update();
         }
 
         private void OnDisable()
         {
-            soundReference.Dispose();
-            inputHandler.Dispose();
-            startImageChanger.Dispose();
-            tutorialPlayer.Dispose();
-            bgmPlayer.Dispose();
+            foreach (IHandler handler in handlers) handler.Dispose();
+            System.Array.Clear(handlers, 0, handlers.Length);
+            handlers = null;
 
-            soundReference = null;
-            tutorialPlayer = null;
-            inputHandler = null;
-            startImageChanger = null;
-            bgmPlayer = null;
+            (startImageReference as IReference)?.Dispose();
+            (audioSourceReference as IReference)?.Dispose();
+            (refPro as IReference)?.Dispose();
+            (soundReference as IReference)?.Dispose();
 
             startImageReference = null;
             audioSourceReference = null;
             refPro = null;
+            soundReference = null;
         }
     }
 }

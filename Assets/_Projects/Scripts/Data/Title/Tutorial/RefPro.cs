@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Interface;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Data.Title.Tutorial
 {
     [Serializable]
-    internal sealed class RefPro
+    internal sealed class RefPro : IReference
     {
         [SerializeField, Range(1f, 60f), Header("表示するまでの時間")]
         private float displayStartTime;
@@ -14,5 +15,10 @@ namespace Data.Title.Tutorial
 
         internal float DisplayStartTime => displayStartTime;
         internal Image Video => video;
+
+        public void Dispose()
+        {
+            video = null;
+        }
     }
 }

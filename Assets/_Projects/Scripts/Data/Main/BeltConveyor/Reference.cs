@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Interface;
 using System;
 using System.Threading;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine;
 namespace Data.Main.BeltConveyor
 {
     [Serializable]
-    internal sealed class Reference
+    internal sealed class Reference : IReference
     {
         [SerializeField, Header("íÜêS")]
         private Transform center;
@@ -46,6 +47,12 @@ namespace Data.Main.BeltConveyor
             Vector3 pos = tf.localPosition;
             pos.z = z;
             tf.localPosition = pos;
+        }
+
+        public void Dispose()
+        {
+            center = null;
+            left = null;
         }
     }
 }

@@ -2,7 +2,6 @@
 using Interface;
 using Manager.Main;
 using Data.Main.TimeCount;
-using System;
 using UnityEngine;
 
 namespace Handler.Main.TimeCount
@@ -12,13 +11,13 @@ namespace Handler.Main.TimeCount
     /// 時間に応じて、太陽を回し、時間のUIを変化させる
     /// 時間が来たら、クリアを判定する
     /// </summary>
-    internal sealed class TimeCounter : IDisposable, IEventable
+    internal sealed class TimeCounter : IHandler
     {
-        private bool isBeingClearable => GameManager.Instance.Flag.IsBeingClearable;
+        private bool isBeingClearable => (GameManager.Instance.Flag as Flag).IsBeingClearable;
         private bool isBeingCleared
         {
-            get { return GameManager.Instance.State.IsBeingCleared; }
-            set { GameManager.Instance.State.IsBeingCleared = value; }
+            get { return (GameManager.Instance.State as State).IsBeingCleared; }
+            set { (GameManager.Instance.State as State).IsBeingCleared = value; }
         }
 
         private float t = 0;

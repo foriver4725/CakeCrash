@@ -1,44 +1,39 @@
-﻿using Handler.Main.Player.PlayerSquat;
-using Handler.Main.TimeCount;
-using Handler.Main.BeltConveyor;
-using Data.Main.TimeCount;
-using BeltConveyorReference = Data.Main.BeltConveyor.Reference;
-using HammerReference = Data.Main.Hammer.Reference;
-using SO;
+﻿using Interface;
 using UnityEngine;
-using Data.Main.Player.PlayerSquat;
-using Manager.Main;
-using Handler.Main.Hammer;
 
 namespace Eventer.Main
 {
-    internal sealed class Eventer : MonoBehaviour
+    internal sealed class Eventer : MonoBehaviour, IEventer
     {
         [SerializeField, Header("時間カウント 関連")]
-        private TimeCountReference timeCountReference;
-
+        private Data.Main.TimeCount.TimeCountReference timeCountReference;
         [SerializeField, Header("カメラ移動 関連")]
-        private CameraReference cameraReference;
-
+        private Data.Main.Player.PlayerSquat.CameraReference cameraReference;
         [SerializeField, Header("ベルトコンベア 関連")]
-        private BeltConveyorReference beltConveyorReference;
-
+        private Data.Main.BeltConveyor.Reference beltConveyorReference;
         [SerializeField, Header("ハンマー 関連")]
-        private HammerReference hammerReference;
+        private Data.Main.Hammer.Reference hammerReference;
 
-        private TimeCounter timeCounter;
-        private PlayerSquatter playerSquatter;
-        private BeltConveyorMover beltConveyorMover;
-        private HammerMover hammerMover;
+        private IHandler[] handlers;
 
         private bool isFirstUpdate = true;
 
         private void OnEnable()
         {
-            timeCounter = new(timeCountReference, SO_Main.Entity.TimeLimit);
-            playerSquatter = new(new(cameraReference), SO_Main.Entity.CameraProperty);
-            beltConveyorMover = new(beltConveyorReference, SO_Main.Entity.BeltConvyorProperty);
-            hammerMover = new(hammerReference, SO_Main.Entity.HammerProperty);
+            handlers = new IHandler[]
+            {
+                new Handler.Main.TimeCount.TimeCounter
+                (timeCountReference, SO.SO_Main.Entity.TimeLimit),
+
+                new Handler.Main.Player.PlayerSquat.PlayerSquatter
+                (new(cameraReference), SO.SO_Main.Entity.CameraProperty),
+
+                new Handler.Main.BeltConveyor.BeltConveyorMover
+                (beltConveyorReference, SO.SO_Main.Entity.BeltConvyorProperty),
+
+                new Handler.Main.Hammer.HammerMover
+                (hammerReference, SO.SO_Main.Entity.HammerProperty)
+            };
         }
 
         private void Update()
@@ -47,31 +42,29 @@ namespace Eventer.Main
             {
                 isFirstUpdate = false;
 
-                GameManager.Instance.OnStart();
-                timeCounter.Start();
-                playerSquatter.Start();
-                beltConveyorMover.Start();
-                hammerMover.Start();
+                Manager.Main.GameManager.Instance.OnStart();
+                foreach (IHandler handler in handlers) handler.Start();
             }
 
-            GameManager.Instance.OnUpdate();
-            timeCounter.Update();
-            playerSquatter.Update();
-            beltConveyorMover.Update();
-            hammerMover.Update();
+            Manager.Main.GameManager.Instance.OnUpdate();
+            foreach (IHandler handler in handlers) handler.Update();
         }
 
         private void OnDisable()
         {
-            timeCounter.Dispose();
-            playerSquatter.Dispose();
-            beltConveyorMover.Dispose();
-            hammerMover.Dispose();
+            foreach (IHandler handler in handlers) handler.Dispose();
+            System.Array.Clear(handlers, 0, handlers.Length);
+            handlers = null;
 
-            timeCounter = null;
-            playerSquatter = null;
-            beltConveyorMover = null;
-            hammerMover = null;
+            (timeCountReference as IReference)?.Dispose();
+            (cameraReference as IReference)?.Dispose();
+            (beltConveyorReference as IReference)?.Dispose();
+            (hammerReference as IReference)?.Dispose();
+
+            timeCountReference = null;
+            cameraReference = null;
+            beltConveyorReference = null;
+            hammerReference = null;
         }
     }
 }

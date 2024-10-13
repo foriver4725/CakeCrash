@@ -2,7 +2,6 @@ using Data.General;
 using IA;
 using Interface;
 using SO;
-using System;
 using TMPro;
 using UnityEngine;
 using Profiler = UnityEngine.Profiling.Profiler;
@@ -64,7 +63,7 @@ namespace General
         }
     }
 
-    internal sealed class DebugInfoDisplayer : IDisposable, INullExistable, IEventable
+    internal sealed class DebugInfoDisplayer : IHandler
     {
         private TextMeshProUGUI debugText;
 
@@ -79,16 +78,15 @@ namespace General
 
         internal DebugInfoDisplayer(TextMeshProUGUI debugText) => this.debugText = debugText;
         public void Dispose() => debugText = null;
-        public bool IsNullExist() => debugText == null;
         public void Start()
         {
-            if (IsNullExist()) return;
+            if (debugText == null) return;
 
             if (debugText.enabled) debugText.enabled = false;
         }
         public void Update()
         {
-            if (IsNullExist()) return;
+            if (debugText == null) return;
 
             cnt++;
             float t = Time.realtimeSinceStartup - preT;
