@@ -42,11 +42,9 @@ namespace SO
 
         [SerializeField, Range(0f, 2f), Header("ハンマーとの接触を有効化する\nケーキのX座標の最大値（ワールド）")]
         private float hitboxXmax;
-        internal float HitboxXmax => hitboxXmax;
 
         [SerializeField, Range(-2f, 0f), Header("ハンマーとの接触を有効化する\nケーキのX座標の最小値（ワールド）")]
         private float hitboxXmin;
-        internal float HitboxXmin => hitboxXmin;
 
         [SerializeField, Header("ハンマーと衝突した後のケーキが、\nまだハンマーと衝突していない他のケーキと接触しないようにするためのレイヤー")]
         private Layer onHitLayer;
