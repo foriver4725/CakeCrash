@@ -1,16 +1,14 @@
-﻿using System;
-using System.Text;
+﻿using Interface;
 using UnityEngine;
 
 namespace Manager.Main
 {
-    internal sealed class GameManager : MonoBehaviour
+    internal sealed class GameManager : MonoBehaviour, IGameManager
     {
-        internal static GameManager Instance { get; set; } = null;
+        public static GameManager Instance { get; set; } = null;
 
-        // ゲームの状態とフラグ
-        internal State State { get; set; }
-        internal Flag Flag { get; private set; }
+        public IState State { get; set; }
+        public IFlag Flag { get; private set; }
         internal PressedColor RecentPressedColor { get; set; }
 
         private void Awake()
@@ -19,23 +17,14 @@ namespace Manager.Main
             else Destroy(gameObject);
         }
 
-        /// <summary>
-        /// Start()で一番最初に呼ぶ
-        /// </summary>
-        internal void OnStart()
+        public void OnStart()
         {
-            State = new();
-            Flag = new(State);
+            State = new State();
+            Flag = new Flag(State as State);
             RecentPressedColor = new();
         }
 
-        /// <summary>
-        /// Update()で一番最初に呼ぶ
-        /// </summary>
-        internal void OnUpdate()
-        {
-
-        }
+        public void OnUpdate() { }
 
         private void OnDisable()
         {
@@ -57,7 +46,7 @@ namespace Manager.Main
     /// <summary>
     /// ゲームの状態（自由に変更可能）
     /// </summary>
-    internal sealed class State
+    internal sealed class State : IState
     {
         internal State() { }
 
@@ -90,7 +79,7 @@ namespace Manager.Main
     /// <summary>
     /// ゲームのフラグ(Stateに連動して変化する。外部から勝手に書き換えないこと)
     /// </summary>
-    internal sealed class Flag : IDisposable
+    internal sealed class Flag : IFlag
     {
         private State state;
 

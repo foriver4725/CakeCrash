@@ -1,12 +1,12 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using System;
+using Interface;
 using System.Threading;
 using UnityEngine;
 
 namespace Data.Main.Player.PlayerSquat
 {
-    internal sealed class CameraMovement : IDisposable
+    internal sealed class CameraMovement : IReference
     {
         private Transform cameraTf;
         private AudioSource squatSE;

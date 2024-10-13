@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Interface;
 using System;
 using System.Threading;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine;
 namespace Data.Main.Hammer
 {
     [Serializable]
-    internal sealed class Reference
+    internal sealed class Reference : IReference
     {
         [SerializeField, Header("HammerのTransform")]
         private Transform hammerTf;
@@ -44,6 +45,11 @@ namespace Data.Main.Hammer
                 if (tf == null) return;
                 tf.localEulerAngles = euler;
             }
+        }
+
+        public void Dispose()
+        {
+            hammerTf = null;
         }
     }
 }

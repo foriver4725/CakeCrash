@@ -8,7 +8,7 @@ using Manager.Main;
 
 namespace Handler.Main.Hammer
 {
-    internal sealed class HammerMover : IEventable, IDisposable
+    internal sealed class HammerMover : IHandler
     {
 
         private Reference reference;

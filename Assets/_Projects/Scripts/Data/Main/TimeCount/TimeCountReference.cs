@@ -1,4 +1,5 @@
 ﻿using General;
+using Interface;
 using SO;
 using System;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 namespace Data.Main.TimeCount
 {
     [Serializable]
-    internal sealed class TimeCountReference
+    internal sealed class TimeCountReference : IReference
     {
         [SerializeField]
         private Transform sun;
@@ -43,5 +44,11 @@ namespace Data.Main.TimeCount
 
         // pが[0, 1]内にあるかどうか
         private bool IsPercentageNormalized(float p) => p is >= 0 and <= 1;
+
+        public void Dispose()
+        {
+            sun = null;
+            clockImage = null;
+        }
     }
 }

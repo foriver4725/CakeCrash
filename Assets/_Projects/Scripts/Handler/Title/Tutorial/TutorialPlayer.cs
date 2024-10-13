@@ -1,12 +1,11 @@
-﻿using System;
-using IA;
+﻿using IA;
 using Interface;
 using UnityEngine;
 using Data.Title.Tutorial;
 
 namespace Handler.Title.Tutorial
 {
-    internal sealed class TutorialPlayer : IEventable, IDisposable
+    internal sealed class TutorialPlayer : IHandler
     {
         private RefPro refPro;
 

@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace Handler.Title.Input
 {
-    internal sealed class InputHandler : IDisposable, IEventable
+    internal sealed class InputHandler : IHandler
     {
         private Action playClickSE;
         private readonly float waitDurOnPlaced;
