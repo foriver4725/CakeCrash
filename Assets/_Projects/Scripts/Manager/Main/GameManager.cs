@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using UnityEngine;
 
 namespace Manager.Main
@@ -10,6 +11,7 @@ namespace Manager.Main
         // ゲームの状態とフラグ
         internal State State { get; set; }
         internal Flag Flag { get; private set; }
+        internal PressedColor RecentPressedColor { get; set; }
 
         private void Awake()
         {
@@ -24,6 +26,7 @@ namespace Manager.Main
         {
             State = new();
             Flag = new(State);
+            RecentPressedColor = new();
         }
 
         /// <summary>
@@ -41,8 +44,15 @@ namespace Manager.Main
             Instance = null;
             Flag = null;
             State = null;
+            RecentPressedColor = null;
         }
     }
+
+    internal sealed class PressedColor
+    {
+        internal string colorType { get; set; } = string.Empty;
+    }
+
 
     /// <summary>
     /// ゲームの状態（自由に変更可能）

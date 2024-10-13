@@ -15,6 +15,9 @@ namespace Data.Main.Hammer
         internal async UniTask Rotate
             (float sz, float ez, Vector3 se, Vector3 ee, float duration, Ease ease, CancellationToken ct)
         {
+            CapsuleCollider hammerCol = hammerTf.transform.Find("Head").gameObject.GetComponent<CapsuleCollider>();
+            if (hammerCol != null) hammerCol.enabled = true;
+
             SetLocalPosZAndLocalEuler(hammerTf, sz, se);
             await hammerTf.DOLocalRotate(ee, duration, RotateMode.FastBeyond360)
                 .SetEase(ease)
