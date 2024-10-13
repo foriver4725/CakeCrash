@@ -2,6 +2,13 @@
 
 namespace SO
 {
+    public enum Layer
+    {
+        UnHit = 6,
+        OnHit = 7,
+    }
+
+
     [CreateAssetMenu(menuName = "SO/SO_Cake", fileName = "SO_Cake")]
     public sealed class SO_Cake : ScriptableObject
     {
@@ -25,7 +32,7 @@ namespace SO
 
         #endregion
 
-        [SerializeField, Header("ケーキを吹っ飛ばす力")]
+        [SerializeField, Range(0f, 50f), Header("ケーキを吹っ飛ばす力")]
         private float knockbackPower;
         internal float KnockbackPower => knockbackPower;
 
@@ -33,16 +40,25 @@ namespace SO
         private Vector3 knockbackVector;
         internal Vector3 KnockbackVector => knockbackVector;
 
-        [SerializeField, Header("ハンマーとの接触を有効化する\nケーキのX座標の最大値（ワールド）")]
+        [SerializeField, Range(0f, 2f), Header("ハンマーとの接触を有効化する\nケーキのX座標の最大値（ワールド）")]
         private float hitboxXmax;
         internal float HitboxXmax => hitboxXmax;
 
-        [SerializeField, Header("ハンマーとの接触を有効化する\nケーキのX座標の最小値（ワールド）")]
+        [SerializeField, Range(-2f, 0f), Header("ハンマーとの接触を有効化する\nケーキのX座標の最小値（ワールド）")]
         private float hitboxXmin;
         internal float HitboxXmin => hitboxXmin;
 
         [SerializeField, Header("ハンマーと衝突した後のケーキが、\nまだハンマーと衝突していない他のケーキと接触しないようにするためのレイヤー")]
-        private int onHitLayer;
-        internal int OnHitLayer => onHitLayer;
+        private Layer onHitLayer;
+        internal int OnHitLayer => onHitLayer.LayerToInt();
+
+        internal bool IsOutHitBox(float x) => x > hitboxXmax || x < hitboxXmin;
+
+    }
+
+    internal static class LayerEx
+    {
+        internal static int LayerToInt(this Layer layer)
+            => (int)layer;
     }
 }
