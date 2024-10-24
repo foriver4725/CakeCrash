@@ -24,6 +24,7 @@ namespace Handler.Main.Cake
 
             else gameObject.SetActive(false);
 
+            GameManager.Instance.CakeClear();
         }
 
         private void OnDisable()

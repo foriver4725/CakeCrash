@@ -11,6 +11,10 @@ namespace Manager.Main
         public IFlag Flag { get; private set; }
         internal PressedColor RecentPressedColor { get; set; }
 
+        // ゲームクリア
+        private bool isAllClear = false;
+        private int cakeCnt = 33 * 3; // 33個 x 3段
+
         private void Awake()
         {
             if (Instance == null) Instance = this;
@@ -34,6 +38,17 @@ namespace Manager.Main
             Flag = null;
             State = null;
             RecentPressedColor = null;
+        }
+
+        public void CakeClear()
+        {
+            cakeCnt--;
+
+            if (cakeCnt <= 0)
+            {
+                Debug.Log("ゲームクリア"); // デバッグ用
+                isAllClear = true;
+            }
         }
     }
 
