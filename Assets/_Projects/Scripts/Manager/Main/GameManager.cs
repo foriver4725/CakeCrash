@@ -1,4 +1,6 @@
-﻿using Interface;
+﻿using Cysharp.Threading.Tasks;
+using System.Threading;
+using Interface;
 using UnityEngine;
 
 namespace Manager.Main
@@ -11,8 +13,7 @@ namespace Manager.Main
         public IFlag Flag { get; private set; }
         internal PressedColor RecentPressedColor { get; set; }
 
-        // ゲームクリア
-        private bool isAllClear = false;
+        // ケーキの個数
         private int cakeCnt = 33 * 3; // 33個 x 3段
 
         private void Awake()
@@ -40,16 +41,21 @@ namespace Manager.Main
             RecentPressedColor = null;
         }
 
-        public void CakeClear()
-        {
-            cakeCnt--;
+        //public void CakeClear()
+        //{
+        //    cakeCnt--;
 
-            if (cakeCnt <= 0)
-            {
-                Debug.Log("ゲームクリア"); // デバッグ用
-                isAllClear = true;
-            }
-        }
+        //    if (cakeCnt <= 0)
+        //    {
+        //        State.IsAllClear = true;
+        //    }
+        //}
+
+        //async UniTaskVoid CheckCkear(CancellationToken ct)
+        //{
+        //    await UniTask.WaitUntilValueChanged(Flag, e => e.IsBeingClearable is true, cancellationToken: ct);
+        //    // Debug.LogWarning("後方置換：ゲームクリア");
+        //}
     }
 
     internal sealed class PressedColor
@@ -89,6 +95,11 @@ namespace Manager.Main
         /// ゲームオーバーになっているか
         /// </summary>
         internal bool IsBeingOvered { get; set; } = false;
+
+        /// <summary>
+        /// ケーキを全て壊したか
+        /// </summary>
+        internal bool IsAllClear { get; set; } = false;
     }
 
     /// <summary>
@@ -140,7 +151,7 @@ namespace Manager.Main
         /// クリアになれるか
         /// </summary>
         internal bool IsBeingClearable =>
-             !state.IsBeingCleared && !state.IsBeingOvered;
+             !state.IsBeingCleared && !state.IsBeingOvered && state.IsAllClear;
 
         /// <summary>
         /// ゲームオーバーになれるか
