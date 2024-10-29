@@ -1,4 +1,4 @@
-using Interface;
+ï»¿using Interface;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +8,7 @@ namespace Data.Title.TitleImage
     [Serializable]
     internal sealed class TitleImageReference : IReference
     {
-        [SerializeField, Header("ƒ^ƒCƒgƒ‹‰æ‘œ(•\Ž¦‚·‚é‡)")]
+        [SerializeField, Header("ã‚¿ã‚¤ãƒˆãƒ«ç”»åƒ")]
         private Image[] titleImages;
         internal Image[] TitleImages => titleImages;
 

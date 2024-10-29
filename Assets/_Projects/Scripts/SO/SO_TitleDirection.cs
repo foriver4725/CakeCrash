@@ -1,4 +1,4 @@
-using Data.Title.TitleImage;
+ï»¿using Data.Title.TitleImage;
 using UnityEngine;
 
 namespace SO
@@ -26,15 +26,15 @@ namespace SO
 
         #endregion
 
-        [SerializeField, Header("ƒ^ƒCƒgƒ‹‰æ‘œ‚ÌØ‚è‘Ö‚í‚è")]
+        [SerializeField, Header("ã‚¿ã‚¤ãƒˆãƒ«ç”»åƒã®åˆ‡ã‚Šæ›¿ã‚ã‚Š")]
         private TitleImageChangeProperty titleImageChangeProperty;
         internal TitleImageChangeProperty TitleImageChangeProperty => titleImageChangeProperty;
 
-        [SerializeField, Header("ƒXƒ^[ƒgƒ{ƒ^ƒ“‚ÌØ‚è‘Ö‚í‚è")]
+        [SerializeField, Header("ã‚¹ã‚¿ãƒ¼ãƒˆãƒœã‚¿ãƒ³ã®åˆ‡ã‚Šæ›¿ã‚ã‚Š")]
         private StartImageProperty startImageProperty;
         internal StartImageProperty StartImageProperty => startImageProperty;
 
-        [SerializeField, Range(+0.0f, 1.0f), Header("ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½ŒãA‰½•b‘Ò‚Â‚©")]
+        [SerializeField, Range(+0.0f, 1.0f), Header("ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸå¾Œã€ä½•ç§’å¾…ã¤ã‹")]
         private float waitDurOnPlaced;
         internal float WaitDurOnPlaced => waitDurOnPlaced;
     }

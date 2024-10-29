@@ -16,9 +16,12 @@ namespace Handler.Main.Hammer
 
         private CancellationTokenSource ctsOnDispose = null;
 
-        private bool isRed => InputGetter.Instance.Main_RedClick.Bool;
-        private bool isBlue => InputGetter.Instance.Main_BlueClick.Bool;
-        private bool isGreen => InputGetter.Instance.Main_GreenClick.Bool;
+        private State state => GameManager.Instance.State;
+        private bool isSmashable => !state.IsSquatting && !state.IsBeingHitted && !state.IsGameEnded;
+
+        private bool isRed => isSmashable && InputGetter.Instance.Main_RedClick.Bool;
+        private bool isBlue => isSmashable && InputGetter.Instance.Main_BlueClick.Bool;
+        private bool isGreen => isSmashable && InputGetter.Instance.Main_GreenClick.Bool;
 
         internal HammerMover(Reference reference, Property property)
         {
@@ -51,13 +54,13 @@ namespace Handler.Main.Hammer
                 };
 
                 if (string.IsNullOrEmpty(color) == false)
-                    GameManager.Instance.RecentPressedColor.colorType = color;
+                    GameManager.Instance.RecentPressedColor.ColorType = color;
 
 
                 await reference.Rotate
                     (property.Sz, property.Ez, property.Se, property.Ee, property.Duration, property.Ease, ct);
 
-                GameManager.Instance.RecentPressedColor.colorType = string.Empty;
+                GameManager.Instance.RecentPressedColor.ColorType = string.Empty;
 
                 await UniTask.Delay(TimeSpan.FromSeconds(property.Interval), cancellationToken: ct);
             }

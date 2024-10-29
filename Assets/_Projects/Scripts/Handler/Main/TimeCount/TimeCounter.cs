@@ -13,17 +13,12 @@ namespace Handler.Main.TimeCount
     /// </summary>
     internal sealed class TimeCounter : IHandler
     {
-        private bool isBeingClearable => (GameManager.Instance.Flag as Flag).IsBeingClearable;
-        private bool isBeingCleared
-        {
-            get { return (GameManager.Instance.State as State).IsBeingCleared; }
-            set { (GameManager.Instance.State as State).IsBeingCleared = value; }
-        }
-
         private float t = 0;
         private readonly float maxT;
 
         private TimeCountReference reference;
+
+        private GameManager gm => GameManager.Instance;
 
         internal TimeCounter(TimeCountReference reference, float maxT)
         {
@@ -35,8 +30,6 @@ namespace Handler.Main.TimeCount
 
         public void Update()
         {
-            if (isBeingCleared is true) return;
-
             if (t >= maxT) StopOnce();
             else
             {
@@ -54,11 +47,12 @@ namespace Handler.Main.TimeCount
 
         internal void StopOnce()
         {
-            if (isBeingClearable is false) return;
-            isBeingCleared = true;
-
             reference.SetSunRotation(1);
             reference.SetClockFillAmount(1);
+
+            if (gm.State.IsGameEnded) return;
+            gm.State.IsGameEnded = true;
+            gm.OnClear();
         }
     }
 }

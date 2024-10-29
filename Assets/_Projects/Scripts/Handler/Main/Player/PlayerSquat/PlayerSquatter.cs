@@ -1,9 +1,11 @@
 ﻿using IA;
 using Interface;
-using System;
 using Data.Main.Player.PlayerSquat;
 using General;
 using Manager.Main;
+using Cysharp.Threading.Tasks;
+using System.Threading;
+using UnityEngine;
 
 namespace Handler.Main.Player.PlayerSquat
 {
@@ -12,8 +14,13 @@ namespace Handler.Main.Player.PlayerSquat
         private CameraMovement cameraMovement;
         private Property property;
 
-        private bool preInput = false, input = false;  // 入力の監視フラグ
-        private bool preEnable = true, enable = true;  // 入力可否の監視フラグ
+        private bool preInput = false, input = false;
+        private bool isDown = false, isUp = false;
+
+        private State state => GameManager.Instance.State;
+        private bool isSquattable => !state.IsBeingHitted && !state.IsGameEnded;
+
+        private CancellationTokenSource cts = new();
 
         internal PlayerSquatter(CameraMovement cameraMovement, Property property)
         {
@@ -24,39 +31,38 @@ namespace Handler.Main.Player.PlayerSquat
         public void Start()
         {
             cameraMovement.CameraLocalY = property.Sy;
+            CheckSquat(cts.Token).Forget();
         }
 
         public void Update()
         {
-            // 負荷軽減のため、動きが変化した瞬間のみを捉え、新しく動かさせ始める
+            input = InputGetter.Instance.Main_SquatValue0.Bool;
+            isDown = !preInput && input;
+            isUp = preInput && !input;
+            preInput = input;
+        }
 
-            try { enable = (GameManager.Instance.Flag as Flag).IsSquattable; }
-            catch (NullReferenceException) { return; }
-
-            // 無効になった瞬間
-            if (preEnable && !enable)
+        private async UniTaskVoid CheckSquat(CancellationToken ct)
+        {
+            while (true)
             {
+                await UniTask.WhenAll(
+                    UniTask.WaitUntil(() => isSquattable, cancellationToken: ct),
+                    UniTask.WaitUntil(() => isDown, cancellationToken: ct)
+                );
+
+                state.IsSquatting = true;
+                NewlyMoveDown();
+
+                await UniTask.WhenAll(
+                    UniTask.WaitUntil(() => isSquattable, cancellationToken: ct),
+                    UniTask.WaitUntil(() => isUp, cancellationToken: ct),
+                    UniTask.WaitUntil(() => !state.IsGameEnded && !state.IsBeingHitted, cancellationToken: ct)
+                );
+
+                state.IsSquatting = false;
                 NewlyMoveUp();
             }
-            // 有効である時
-            else if (enable)
-            {
-                input = InputGetter.Instance.Main_SquatValue0.Bool;
-
-                // 押された瞬間
-                if (!preInput && input)
-                {
-                    NewlyMoveDown();
-                }
-                // 離された瞬間
-                else if (preInput && !input)
-                {
-                    NewlyMoveUp();
-                }
-            }
-
-            preInput = input;
-            preEnable = enable;
         }
 
         private void NewlyMoveUp()
@@ -79,6 +85,10 @@ namespace Handler.Main.Player.PlayerSquat
 
             cameraMovement = null;
             property = null;
+
+            cts.Cancel();
+            cts.Dispose();
+            cts = null;
         }
     }
 }

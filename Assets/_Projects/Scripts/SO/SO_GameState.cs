@@ -1,4 +1,4 @@
-using Data.General;
+ï»¿using Data.General;
 using System;
 using System.Collections.ObjectModel;
 using UnityEngine;
@@ -28,7 +28,7 @@ namespace SO
 
         #endregion
 
-        [SerializeField, Header("ƒQ[ƒ€ƒXƒe[ƒg\nƒfƒtƒHƒ‹ƒg‚ÍÅ‰A‡”Ô‚ÉØ‚è‘Ö‚í‚é")]
+        [SerializeField, Header("ã‚²ãƒ¼ãƒ ã‚¹ãƒ†ãƒ¼ãƒˆ\nãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯æœ€åˆã€é †ç•ªã«åˆ‡ã‚Šæ›¿ã‚ã‚‹")]
         private SerializedGameState[] gameStates;
         internal ReadOnlyCollection<SerializedGameState> GameStates => Array.AsReadOnly(gameStates);
     }

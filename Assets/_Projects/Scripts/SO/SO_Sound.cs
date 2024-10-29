@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -45,11 +45,11 @@ namespace SO
     [Serializable]
     internal sealed class BGMReference
     {
-        [SerializeField, Header("ƒ^ƒCƒgƒ‹")]
+        [SerializeField, Header("ã‚¿ã‚¤ãƒˆãƒ«")]
         private AudioClip title;
         internal AudioClip Title => title;
 
-        [SerializeField, Header("ƒƒCƒ“ƒQ[ƒ€")]
+        [SerializeField, Header("ãƒ¡ã‚¤ãƒ³ã‚²ãƒ¼ãƒ ")]
         private AudioClip main;
         internal AudioClip Main => main;
     }
@@ -57,15 +57,15 @@ namespace SO
     [Serializable]
     internal sealed class SEReference
     {
-        [SerializeField, Header("ƒvƒŒƒCƒ„[ ŠÖ˜A")]
+        [SerializeField, Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ é–¢é€£")]
         private SE.Player player;
         internal SE.Player Player => player;
 
-        [SerializeField, Header("Œx”õˆõ ŠÖ˜A")]
+        [SerializeField, Header("è­¦å‚™å“¡ é–¢é€£")]
         private SE.Guardman guardman;
         internal SE.Guardman Guardman => guardman;
 
-        [SerializeField, Header("”Ä—p")]
+        [SerializeField, Header("æ±Žç”¨")]
         private SE.General general;
         internal SE.General General => general;
     }
@@ -75,27 +75,27 @@ namespace SO
         [Serializable]
         internal sealed class Player
         {
-            [SerializeField, Header("ƒnƒ“ƒ}[‚ðƒXƒ}ƒbƒVƒ…‚·‚é")]
+            [SerializeField, Header("ãƒãƒ³ãƒžãƒ¼ã‚’ã‚¹ãƒžãƒƒã‚·ãƒ¥ã™ã‚‹")]
             private AudioClip smash;
             internal AudioClip Smash => smash;
 
-            [SerializeField, Header("ƒnƒ“ƒ}[‚ÅƒNƒ‰ƒbƒVƒ…‚·‚é")]
+            [SerializeField, Header("ãƒãƒ³ãƒžãƒ¼ã§ã‚¯ãƒ©ãƒƒã‚·ãƒ¥ã™ã‚‹")]
             private AudioClip crash;
             internal AudioClip Crash => crash;
 
-            [SerializeField, Header("ƒXƒ}ƒbƒVƒ…•s‰Â")]
+            [SerializeField, Header("ã‚¹ãƒžãƒƒã‚·ãƒ¥ä¸å¯")]
             private AudioClip unSmashable;
             internal AudioClip UnSmashable => unSmashable;
 
-            [SerializeField, Header("ƒNƒ‰ƒbƒVƒ…Ž¸”s")]
+            [SerializeField, Header("ã‚¯ãƒ©ãƒƒã‚·ãƒ¥å¤±æ•—")]
             private AudioClip crashFailed;
             internal AudioClip CrashFailed => crashFailed;
 
-            [SerializeField, Header("S‘Ÿ‚ÌŒÛ“®")]
+            [SerializeField, Header("å¿ƒè‡“ã®é¼“å‹•")]
             private AudioClip heartbeat;
             internal AudioClip Heartbeat => heartbeat;
 
-            [SerializeField, Header("Œx”õˆõ‚ÉŒ©‚Â‚©‚é")]
+            [SerializeField, Header("è­¦å‚™å“¡ã«è¦‹ã¤ã‹ã‚‹")]
             private AudioClip foundByGuardman;
             internal AudioClip FoundByGuardman => foundByGuardman;
         }
@@ -103,19 +103,19 @@ namespace SO
         [Serializable]
         internal sealed class Guardman
         {
-            [SerializeField, Header("•à‚­")]
+            [SerializeField, Header("æ­©ã")]
             private AudioClip walk;
             internal AudioClip Walk => walk;
 
-            [SerializeField, Header("ƒhƒA‚ÉŽè‚ð‚©‚¯‚é")]
+            [SerializeField, Header("ãƒ‰ã‚¢ã«æ‰‹ã‚’ã‹ã‘ã‚‹")]
             private AudioClip doorHandle;
             internal AudioClip DoorHandle => doorHandle;
 
-            [SerializeField, Header("ƒhƒA‚ðŠJ‚­")]
+            [SerializeField, Header("ãƒ‰ã‚¢ã‚’é–‹ã")]
             private AudioClip doorOpen;
             internal AudioClip DoorOpen => doorOpen;
 
-            [SerializeField, Header("ƒhƒA‚ð•Â‚ß‚é")]
+            [SerializeField, Header("ãƒ‰ã‚¢ã‚’é–‰ã‚ã‚‹")]
             private AudioClip doorClose;
             internal AudioClip DoorClose => doorClose;
         }
@@ -123,7 +123,7 @@ namespace SO
         [Serializable]
         internal sealed class General
         {
-            [SerializeField, Header("ƒNƒŠƒbƒN‚·‚é")]
+            [SerializeField, Header("ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹")]
             private AudioClip click;
             internal AudioClip Click => click;
         }

@@ -19,7 +19,7 @@ MonoBehaviour:
     rx: {x: 7, y: -10}
   sunRotateOffset: 10
   beltConvyorProperty:
-    duration: 25
+    duration: 100
   hammerProperty:
     sz: -2.8
     ez: -28
