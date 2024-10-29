@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Interface;
 using System;
+using System.Linq;
 using System.Threading;
 using UnityEngine;
 
@@ -43,6 +44,9 @@ namespace Data.Main.BeltConveyor
                 { 22.5f, 19.5f, 16.5f, 13.5f, 10.5f, 7.5f, 4.5f, 1.5f, -1.5f, -4.5f, -7.5f, -10.5f, -13.5f, -16.5f, -19.5f, -22.5f, -25.5f };
                 for (int i = 0; i < len; i++)
                 {
+                    // シャッフルしたものを返す
+                    float[] shuffledCakeLocalZs = cakeLocalZs.OrderBy(_ => Guid.NewGuid()).ToArray();
+
                     Transform cakeSet = cakeSets[i];
                     Transform large = cakeSet.GetChild(2);
                     Transform medium = cakeSet.GetChild(1);
