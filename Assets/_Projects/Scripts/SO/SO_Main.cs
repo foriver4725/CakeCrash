@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace SO
 {
@@ -25,23 +25,23 @@ namespace SO
 
         #endregion
 
-        [SerializeField, Range(5.0f, 180.0f), Header("§ŒÀŽžŠÔ")]
+        [SerializeField, Range(5.0f, 180.0f), Header("åˆ¶é™æ™‚é–“")]
         private float timeLimit;
         internal float TimeLimit => timeLimit;
 
-        [SerializeField, Header("ƒJƒƒ‰ˆÚ“® ŠÖ˜A")]
+        [SerializeField, Header("ã‚«ãƒ¡ãƒ©ç§»å‹• é–¢é€£")]
         private Data.Main.Player.PlayerSquat.Property cameraProperty;
         internal Data.Main.Player.PlayerSquat.Property CameraProperty => cameraProperty;
 
-        [SerializeField, Range(-30.0f, 30.0f), Header("‘¾—z‚Ì‰ñ“]‚ÌŽn“_/I“_‚ðA‰½“x‚¸‚ç‚·‚©\n(³F’‹•ûŒü;•‰F–é•ûŒü)")]
+        [SerializeField, Range(-30.0f, 30.0f), Header("å¤ªé™½ã®å›žè»¢ã®å§‹ç‚¹/çµ‚ç‚¹ã‚’ã€ä½•åº¦ãšã‚‰ã™ã‹\n(æ­£ï¼šæ˜¼æ–¹å‘;è² ï¼šå¤œæ–¹å‘)")]
         private float sunRotateOffset;
         internal float SunRotateOffset => sunRotateOffset;
 
-        [SerializeField, Header("ƒxƒ‹ƒgƒRƒ“ƒxƒA ŠÖ˜A")]
+        [SerializeField, Header("ãƒ™ãƒ«ãƒˆã‚³ãƒ³ãƒ™ã‚¢ é–¢é€£")]
         private Data.Main.BeltConveyor.Property beltConvyorProperty;
         internal Data.Main.BeltConveyor.Property BeltConvyorProperty => beltConvyorProperty;
 
-        [SerializeField, Header("ƒnƒ“ƒ}[ ŠÖ˜A")]
+        [SerializeField, Header("ãƒãƒ³ãƒžãƒ¼ é–¢é€£")]
         private Data.Main.Hammer.Property hammerProperty;
         internal Data.Main.Hammer.Property HammerProperty => hammerProperty;
     }

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Interface;
 using System;
@@ -10,10 +10,10 @@ namespace Data.Main.BeltConveyor
     [Serializable]
     internal sealed class Reference : IReference
     {
-        [SerializeField, Header("’†S")]
+        [SerializeField, Header("ä¸­å¿ƒ")]
         private Transform center;
 
-        [SerializeField, Header("’†S‚æ‚è¶")]
+        [SerializeField, Header("ä¸­å¿ƒã‚ˆã‚Šå·¦")]
         private Transform left;
 
         internal async UniTask Move(float d, CancellationToken ct)

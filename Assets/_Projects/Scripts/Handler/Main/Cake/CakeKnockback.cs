@@ -10,7 +10,7 @@ namespace Handler.Main.Cake
     internal sealed class CakeKnockback : MonoBehaviour
     {
 
-        [SerializeField, Header("ケーキのリジッドボディ")] Rigidbody cakeRb;
+        [SerializeField, Header("ケーキのリジッドボディ")] private Rigidbody cakeRb;
 
         internal void Hit()
         {
@@ -19,18 +19,26 @@ namespace Handler.Main.Cake
 
             gameObject.layer = SO_Cake.Entity.OnHitLayer;
 
-            if (GameManager.Instance.RecentPressedColor.colorType == tag)
+            if (GameManager.Instance.RecentPressedColor.ColorType == tag)
                 cakeRb.AddForce(SO_Cake.Entity.KnockbackVector * SO_Cake.Entity.KnockbackPower, ForceMode.Impulse);
 
             else gameObject.SetActive(false);
-
         }
 
-        private void OnDisable()
+        private void OnDisable() => cakeRb = null;
+
+        private void OnTriggerEnter(Collider other)
         {
-            cakeRb = null;
+            if (other.CompareTag("Wall/CakeDestroy"))
+            {
+                gameObject.SetActive(false);
+                OnCakeHitWall();
+            }
+        }
+
+        private void OnCakeHitWall()
+        {
+            GameManager.Instance.CakeCount++;
         }
     }
 }
-
-

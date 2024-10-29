@@ -8,6 +8,7 @@ TagManager:
   - Cake/Red
   - Cake/Blue
   - Cake/Green
+  - Wall/CakeDestroy
   layers:
   - Default
   - TransparentFX
