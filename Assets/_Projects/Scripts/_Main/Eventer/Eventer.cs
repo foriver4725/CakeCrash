@@ -16,6 +16,10 @@ namespace Main.Eventer
         private BeltConveyorReference beltConveyorReference;
         [SerializeField, Header("ハンマー 関連")]
         private HammerReference hammerReference;
+        [SerializeField, Header("スコア表示 関連")]
+        private ScoreReference scoreReference;
+        [SerializeField, Header("アナウンス画像 関連")]
+        private AnnounceImageReference announceImageReference;
 
         private IReference[] datas;
         private IHandler[] handlers;
@@ -32,7 +36,8 @@ namespace Main.Eventer
                 timeCountReference,
                 cameraReference,
                 beltConveyorReference,
-                hammerReference
+                hammerReference,
+                scoreReference
             };
 
             handlers = new IHandler[]
@@ -40,8 +45,11 @@ namespace Main.Eventer
                 new TimeCounter(timeCountReference, SMain.TimeLimit),
                 new PlayerSquatter(new(cameraReference), SMain.CameraProperty),
                 new BeltConveyorMover(beltConveyorReference, SMain.BeltConvyorProperty),
-                new HammerMover(hammerReference, SMain.HammerProperty)
+                new HammerMover(hammerReference, SMain.HammerProperty),
+                new ScoreShower(scoreReference)
             };
+
+            (manager as GameManager).AnnounceImageReference = announceImageReference;
         }
 
         private void Update()

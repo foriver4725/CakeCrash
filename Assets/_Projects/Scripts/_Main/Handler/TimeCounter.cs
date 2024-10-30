@@ -3,6 +3,7 @@ using Interface;
 using Main.Manager;
 using Main.Data;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 namespace Main.Handler
 {
@@ -17,8 +18,6 @@ namespace Main.Handler
         private readonly float maxT;
 
         private TimeCountReference reference;
-
-        private GameManager gm => GameManager.Instance;
 
         internal TimeCounter(TimeCountReference reference, float maxT)
         {
@@ -50,9 +49,9 @@ namespace Main.Handler
             reference.SetSunRotation(1);
             reference.SetClockFillAmount(1);
 
-            if (gm.State.IsGameEnded) return;
-            gm.State.IsGameEnded = true;
-            gm.OnClear();
+            if (GameManager.Instance.State.IsGameEnded) return;
+            GameManager.Instance.State.IsGameEnded = true;
+            GameManager.Instance.OnClear();
         }
     }
 }

@@ -17,6 +17,8 @@ namespace General
             return (x - a) * (d - c) / (b - a) + c;
         }
 
+        internal static async UniTask SecWait(this float sec, CancellationToken ct) => await UniTask.Delay(TimeSpan.FromSeconds(sec), cancellationToken: ct);
+
         internal static async UniTask SecondsWaitAndDo(this float seconds, Action action, CancellationToken ct)
         {
             if (action == null) return;

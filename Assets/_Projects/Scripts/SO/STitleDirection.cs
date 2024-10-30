@@ -7,10 +7,6 @@ namespace SO
     [CreateAssetMenu(menuName = "SO/TitleDirection", fileName = "STitleDirection")]
     public sealed class STitleDirection : AScriptableObject<STitleDirection>
     {
-        [SerializeField, Header("タイトル画像の切り替わり")]
-        private TitleImageChangeProperty titleImageChangeProperty;
-        internal TitleImageChangeProperty TitleImageChangeProperty => titleImageChangeProperty;
-
         [SerializeField, Header("スタートボタンの切り替わり")]
         private StartImageProperty startImageProperty;
         internal StartImageProperty StartImageProperty => startImageProperty;

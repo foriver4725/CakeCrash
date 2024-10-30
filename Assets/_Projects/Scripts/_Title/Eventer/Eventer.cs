@@ -10,7 +10,6 @@ namespace Title.Eventer
     {
         [SerializeField] private StartImageReference startImageReference;
         [SerializeField] private AudioSourceReference audioSourceReference;
-        [SerializeField] private TitleMovieReference titleMovieReference;
 
         private SoundReference soundReference;
 
@@ -31,13 +30,11 @@ namespace Title.Eventer
             {
                 startImageReference,
                 audioSourceReference,
-                titleMovieReference,
                 soundReference
             };
 
             handlers = new IHandler[]
             {
-                new TutorialPlayer(titleMovieReference),
                 new InputHandler(soundReference.PlayClickSE, SDir.WaitDurOnPlaced),
                 new StartImageChanger(startImageReference, SDir.StartImageProperty),
                 new BGMPlayer(soundReference.PlayBGM)
@@ -70,7 +67,6 @@ namespace Title.Eventer
 
             startImageReference = null;
             audioSourceReference = null;
-            titleMovieReference = null;
             soundReference = null;
         }
     }

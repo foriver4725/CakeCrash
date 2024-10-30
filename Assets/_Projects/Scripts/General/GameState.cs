@@ -37,6 +37,13 @@ namespace General
                 index = val;
             }
         }
+
+        private static bool isPaused = false;
+        internal static bool IsPaused
+        {
+            get => isPaused;
+            set { isPaused = value; Time.timeScale = isPaused ? 0 : 1; }
+        }
     }
 
     [Serializable]

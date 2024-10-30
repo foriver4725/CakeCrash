@@ -1,6 +1,4 @@
-using System;
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace General
@@ -9,7 +7,8 @@ namespace General
     {
         Title,
         Config,
-        Main
+        Main,
+        Clear
     }
 
     internal static class LoadScene
@@ -20,10 +19,15 @@ namespace General
                 SceneName.Title => "Title",
                 SceneName.Config => "Config",
                 SceneName.Main => "Main",
-                _ => throw new Exception("–³Œø‚ÈŒ`Ž®‚Å‚·")
+                SceneName.Clear => "Clear",
+                _ => throw new()
             };
 
-        internal static void LoadSync(SceneName sceneName) => SceneManager.LoadScene(sceneName.ToSceneNameString());
+        internal static void LoadSync(SceneName sceneName)
+        {
+            GameState.IsPaused = false;
+            SceneManager.LoadScene(sceneName.ToSceneNameString());
+        }
 
         internal static bool IsInThisScene(SceneName sceneName)
             => SceneManager.GetActiveScene().name == sceneName.ToSceneNameString();

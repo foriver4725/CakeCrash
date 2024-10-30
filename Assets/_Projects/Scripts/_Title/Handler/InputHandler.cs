@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using General;
 using IA;
 using Interface;
-using Title.Manager;
 using System;
 using System.Threading;
 
@@ -14,11 +13,6 @@ namespace Title.Handler
         private readonly float waitDurOnPlaced;
         private CancellationTokenSource cts;
 
-        private bool isAvailable
-        {
-            get { return GameManager.Instance.IsInputAvailable; }
-            set { GameManager.Instance.IsInputAvailable = value; }
-        }
         private bool isStart => InputGetter.Instance.Main_RedClick.Bool;
         private bool isConfig => InputGetter.Instance.Shortcut_LoadConfigSceneInTitleSceneClick.Bool;
 
@@ -39,21 +33,22 @@ namespace Title.Handler
             cts = null;
         }
 
-        public void Start() { }
+        public void Start() => SceneChange(cts.Token).Forget();
+        public void Update() { }
 
-        public void Update()
+        private async UniTask SceneChange(CancellationToken ct)
         {
-            if (isAvailable is false) return;
+            int i = await UniTask.WhenAny(
+                UniTask.WaitUntil(() => isStart, cancellationToken: ct),
+                UniTask.WaitUntil(() => isConfig, cancellationToken: ct)
+            );
 
-            if (isStart) OnLoadSceneButtonPlaced(SceneName.Main);
-            else if (isConfig) OnLoadSceneButtonPlaced(SceneName.Config);
-        }
+            playClickSE();
+            await waitDurOnPlaced.SecWait(ct);
 
-        private void OnLoadSceneButtonPlaced(SceneName loadSceneName)
-        {
-            isAvailable = false;
-            if (playClickSE is not null) playClickSE();
-            waitDurOnPlaced.SecondsWaitAndDo(() => LoadScene.LoadSync(loadSceneName), cts.Token).Forget();
+            if (i == 0) LoadScene.LoadSync(SceneName.Main);
+            else if (i == 1) LoadScene.LoadSync(SceneName.Config);
+            else return;
         }
     }
 }

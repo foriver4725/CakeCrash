@@ -43,7 +43,7 @@ namespace Interface
 
     public abstract class AScriptableObject<T> : ScriptableObject where T : ScriptableObject
     {
-        private const string PATH = nameof(T);
+        private static readonly string PATH = typeof(T).Name;
 
         private static T entity = null;
 
