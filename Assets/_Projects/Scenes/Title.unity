@@ -119,6 +119,30 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &61444993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2728967202036245289, guid: c19186da7e37e6047a57c5f82347fadb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4210448627174127588}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &98503281 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4967431588455415602, guid: c19186da7e37e6047a57c5f82347fadb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4210448627174127588}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &601641027
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +349,18 @@ Transform:
   - {fileID: 725034713}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1156197998 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9072190880963816814, guid: c19186da7e37e6047a57c5f82347fadb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4210448627174127588}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1247945560
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,15 +407,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startImageReference:
     lightImages:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 98503281}
+    - {fileID: 61444993}
+    - {fileID: 1156197998}
   audioSourceReference:
     bgm: {fileID: 1991846118}
     clickSE: {fileID: 725034714}
-  titleMovieReference:
-    displayStartTime: 1
-    video: {fileID: 0}
 --- !u!1 &1991846116
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,10 +600,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2609428736418904944, guid: c19186da7e37e6047a57c5f82347fadb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -430
+      objectReference: {fileID: 0}
     - target: {fileID: 6925900987943548331, guid: c19186da7e37e6047a57c5f82347fadb,
         type: 3}
       propertyPath: m_Name
       value: TitleProps
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368065493140187140, guid: c19186da7e37e6047a57c5f82347fadb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -430
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,6 +5,7 @@ using Interface;
 using System;
 using System.Threading;
 using Main.Manager;
+using General;
 
 namespace Main.Handler
 {
@@ -17,7 +18,7 @@ namespace Main.Handler
         private CancellationTokenSource ctsOnDispose = null;
 
         private State state => GameManager.Instance.State;
-        private bool isSmashable => !state.IsSquatting && !state.IsBeingHitted && !state.IsGameEnded;
+        private bool isSmashable => !state.IsSquatting && !state.IsBeingHitted && !state.IsGameEnded && !GameState.IsPaused;
 
         private bool isRed => isSmashable && InputGetter.Instance.Main_RedClick.Bool;
         private bool isBlue => isSmashable && InputGetter.Instance.Main_BlueClick.Bool;

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2992e289803998a499bffd73b0bed83d, type: 3}
-  m_Name: SO_Sound
+  m_Name: SSound
   m_EditorClassIdentifier: 
   am: {fileID: 24100000, guid: 062047413a3296e4cb81a398c7639a4b, type: 2}
   bgm:

@@ -8,12 +8,9 @@ namespace Title.Data
     [Serializable]
     internal sealed class StartImageReference : IReference
     {
-        [SerializeField, Header("�X�^�[�g�{�^���̃��C�g����")]
+        [SerializeField]
         private Image[] lightImages;
 
-        /// <summary>
-        /// lightImage.fillAmount�̒l��a/b�ɂ���
-        /// </summary>
         internal void SetLightImagesFillAmount(int a, int b)
         {
             if (b == 0) return;
@@ -26,9 +23,6 @@ namespace Title.Data
             };
         }
 
-        /// <summary>
-        /// lightImage.fillAmount��0�ŏ���������
-        /// </summary>
         internal void InitLightImagesFillAmount() => SetLightImagesFillAmount(0, 1);
 
         public void Dispose()
