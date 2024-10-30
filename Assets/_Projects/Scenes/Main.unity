@@ -783,6 +783,27 @@ MonoBehaviour:
   beltConveyorReference:
     center: {fileID: 1401255900}
     left: {fileID: 1834000000}
+    redCakes:
+      small: {fileID: 3776827631404145284, guid: 94d6d8cc3fdb86547a2ce88f03e481a7,
+        type: 3}
+      medium: {fileID: 6667879431522430762, guid: 75ce0ab52f2d782438bd9d939cea3286,
+        type: 3}
+      large: {fileID: 6099327849222485329, guid: 12dd75dd6707bfa469c8b49d7506f141,
+        type: 3}
+    blueCakes:
+      small: {fileID: 1473056500151981227, guid: ce9ab8f008a39434b94271620707c91e,
+        type: 3}
+      medium: {fileID: 7740847495865561948, guid: b78970f6b8de7ec48890ee4eee9abf2e,
+        type: 3}
+      large: {fileID: 8194753524234901147, guid: 0ef423bee603c4249bbfa209639c4b17,
+        type: 3}
+    greenCakes:
+      small: {fileID: 4909644164988680908, guid: ea0e0b42637966543ad697eca33af960,
+        type: 3}
+      medium: {fileID: 9070836568524506452, guid: 45a69ae7f7cc87e47aba59a51d00b13e,
+        type: 3}
+      large: {fileID: 6595234634991104032, guid: a7a3888b0f5c440459681d5b0b364ead,
+        type: 3}
   hammerReference:
     hammerTf: {fileID: 226244022}
 --- !u!1001 &3979736877337891892
