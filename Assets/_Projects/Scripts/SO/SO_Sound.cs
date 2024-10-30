@@ -1,32 +1,13 @@
 ﻿using System;
+using Interface;
 using UnityEngine;
 using UnityEngine.Audio;
 
 namespace SO
 {
-    [CreateAssetMenu(menuName = "SO/SO_Sound", fileName = "SO_Sound")]
-    public sealed class SO_Sound : ScriptableObject
+    [CreateAssetMenu(menuName = "SO/Sound", fileName = "SSound")]
+    public sealed class SSound : AScriptableObject<SSound>
     {
-        #region
-
-        public const string PATH = "SO_Sound";
-
-        private static SO_Sound _entity = null;
-        public static SO_Sound Entity
-        {
-            get
-            {
-                if (_entity == null)
-                {
-                    _entity = Resources.Load<SO_Sound>(PATH);
-                    if (_entity == null) Debug.LogError(PATH + " not found");
-                }
-                return _entity;
-            }
-        }
-
-        #endregion
-
         [SerializeField]
         private AudioMixer am;
         internal AudioMixer AM => am;

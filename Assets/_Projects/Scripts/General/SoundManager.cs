@@ -15,8 +15,8 @@ namespace General
     internal static class SoundManager
     {
         /// <summary>
-        /// nullƒ`ƒFƒbƒNÏ‚İ
-        /// SoundType.Master‚Í•s‰Â
+        /// nullï¿½`ï¿½Fï¿½bï¿½Nï¿½Ï‚ï¿½
+        /// SoundType.Masterï¿½Í•sï¿½ï¿½
         /// </summary>
         internal static void Raise(this AudioSource source, AudioClip clip, SoundType type)
         {
@@ -39,7 +39,7 @@ namespace General
 
                 source.PlayOneShot(clip);
             }
-            else throw new Exception("–³Œø‚Èí—Ş‚Å‚·");
+            else throw new Exception("ï¿½ï¿½ï¿½ï¿½ï¿½Èï¿½Ş‚Å‚ï¿½");
         }
 
         internal static float BGMVolume
@@ -67,7 +67,7 @@ namespace General
             am.SetFloat(type.ToParamNameString(), newVolume);
         }
 
-        private static AudioMixer am => SO_Sound.Entity.AM;
+        private static AudioMixer am => SSound.Entity.AM;
 
         private static string ToParamNameString(this SoundType type)
             => type switch
@@ -75,7 +75,7 @@ namespace General
                 SoundType.Master => "MasterParam",
                 SoundType.BGM => "BGMParam",
                 SoundType.SE => "SEParam",
-                _ => throw new Exception("–³Œø‚Èí—Ş‚Å‚·")
+                _ => throw new Exception("ï¿½ï¿½ï¿½ï¿½ï¿½Èï¿½Ş‚Å‚ï¿½")
             };
     }
 }
