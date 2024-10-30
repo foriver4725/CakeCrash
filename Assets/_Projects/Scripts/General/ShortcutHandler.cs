@@ -1,4 +1,4 @@
-using Data.General;
+using General;
 using IA;
 using Interface;
 using SO;
@@ -43,7 +43,7 @@ namespace General
             }
             else if (input.Shortcut_TriggerScreenSizeClick.Bool)
             {
-                var gameStates = SO_GameState.Entity.GameStates;
+                var gameStates = SGameState.Entity.GameStates;
                 if (gameStates is null) return;
                 if (gameStates.Count <= 1) return;
                 foreach (var e in gameStates) if (e is null) return;
@@ -110,7 +110,7 @@ namespace General
     {
         internal static float ByteToMegabyte(this long n)
         {
-            // KBˆÈ‰º‚ÍØ‚èŽÌ‚Ä
+            // KBï¿½È‰ï¿½ï¿½ÍØ‚ï¿½Ì‚ï¿½
             return (n >> 10) / 1024f;
         }
     }

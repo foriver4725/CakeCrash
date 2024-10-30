@@ -1,31 +1,12 @@
-﻿using Data.Title.TitleImage;
+﻿using Interface;
+using Title.Data;
 using UnityEngine;
 
 namespace SO
 {
-    [CreateAssetMenu(menuName = "SO/SO_TitleDirection", fileName = "SO_TitleDirection")]
-    public sealed class SO_TitleDirection : ScriptableObject
+    [CreateAssetMenu(menuName = "SO/TitleDirection", fileName = "STitleDirection")]
+    public sealed class STitleDirection : AScriptableObject<STitleDirection>
     {
-        #region
-
-        public const string PATH = "SO_TitleDirection";
-
-        private static SO_TitleDirection _entity = null;
-        public static SO_TitleDirection Entity
-        {
-            get
-            {
-                if (_entity == null)
-                {
-                    _entity = Resources.Load<SO_TitleDirection>(PATH);
-                    if (_entity == null) Debug.LogError(PATH + " not found");
-                }
-                return _entity;
-            }
-        }
-
-        #endregion
-
         [SerializeField, Header("タイトル画像の切り替わり")]
         private TitleImageChangeProperty titleImageChangeProperty;
         internal TitleImageChangeProperty TitleImageChangeProperty => titleImageChangeProperty;

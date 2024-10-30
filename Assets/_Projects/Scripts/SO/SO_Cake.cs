@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Interface;
+using UnityEngine;
 
 namespace SO
 {
@@ -9,29 +10,9 @@ namespace SO
     }
 
 
-    [CreateAssetMenu(menuName = "SO/SO_Cake", fileName = "SO_Cake")]
-    public sealed class SO_Cake : ScriptableObject
+    [CreateAssetMenu(menuName = "SO/Cake", fileName = "SCake")]
+    public sealed class SCake : AScriptableObject<SCake>
     {
-        #region
-
-        public const string PATH = "SO_Cake";
-
-        private static SO_Cake _entity = null;
-        public static SO_Cake Entity
-        {
-            get
-            {
-                if (_entity == null)
-                {
-                    _entity = Resources.Load<SO_Cake>(PATH);
-                    if (_entity == null) Debug.LogError(PATH + " not found");
-                }
-                return _entity;
-            }
-        }
-
-        #endregion
-
         [SerializeField, Range(0f, 50f), Header("ケーキを吹っ飛ばす力")]
         private float knockbackPower;
         internal float KnockbackPower => knockbackPower;
@@ -46,17 +27,14 @@ namespace SO
         [SerializeField, Range(-2f, 0f), Header("ハンマーとの接触を有効化する\nケーキのX座標の最小値（ワールド）")]
         private float hitboxXmin;
 
-        [SerializeField, Header("ハンマーと衝突した後のケーキが、\nまだハンマーと衝突していない他のケーキと接触しないようにするためのレイヤー")]
+        [SerializeField, Header("ケーキの衝突時のレイヤー")]
         private Layer onHitLayer;
-        internal int OnHitLayer => onHitLayer.LayerToInt();
+        internal int OnHitLayer => (int)onHitLayer;
+
+        [SerializeField, Header("ケーキの非衝突時のレイヤー")]
+        private Layer unhitLayer;
+        internal int UnhitLayer => (int)unhitLayer;
 
         internal bool IsOutHitBox(float x) => x > hitboxXmax || x < hitboxXmin;
-
-    }
-
-    internal static class LayerEx
-    {
-        internal static int LayerToInt(this Layer layer)
-            => (int)layer;
     }
 }

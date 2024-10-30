@@ -17,3 +17,4 @@ MonoBehaviour:
   hitboxXmax: 1.6
   hitboxXmin: -1.6
   onHitLayer: 7
+  unhitLayer: 6
