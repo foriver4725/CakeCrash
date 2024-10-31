@@ -194,6 +194,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105655220}
   m_CullTransparentMesh: 1
+--- !u!4 &127637045 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6945685493584447361, guid: 9be25829e60545c42a0f32d073074499,
+    type: 3}
+  m_PrefabInstance: {fileID: 7625036131686597262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &142984855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7213904646194134740, guid: 3eb28b64881037446943dccf58cb11c9,
@@ -805,6 +811,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a99154f9538c54d93ebdb3d2534817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1483352384 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1850085063374221294, guid: 9be25829e60545c42a0f32d073074499,
+    type: 3}
+  m_PrefabInstance: {fileID: 7625036131686597262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1575453808 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8222889213390884075, guid: 9be25829e60545c42a0f32d073074499,
+    type: 3}
+  m_PrefabInstance: {fileID: 7625036131686597262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1834000000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8830343584366675800, guid: 9be25829e60545c42a0f32d073074499,
@@ -1048,6 +1066,10 @@ MonoBehaviour:
         type: 3}
       large: {fileID: 6595234634991104032, guid: a7a3888b0f5c440459681d5b0b364ead,
         type: 3}
+  guardmanReference:
+    door: {fileID: 1483352384}
+    stand: {fileID: 127637045}
+    walk: {fileID: 1575453808}
   hammerReference:
     hammerTf: {fileID: 226244022}
   scoreReference:

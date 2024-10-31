@@ -14,6 +14,8 @@ namespace Main.Eventer
         private CameraReference cameraReference;
         [SerializeField, Header("ベルトコンベア 関連")]
         private BeltConveyorReference beltConveyorReference;
+        [SerializeField, Header("ガードマン関連")]
+        private GuardmanReference guardmanReference;
         [SerializeField, Header("ハンマー 関連")]
         private HammerReference hammerReference;
         [SerializeField, Header("スコア表示 関連")]
@@ -36,6 +38,7 @@ namespace Main.Eventer
                 timeCountReference,
                 cameraReference,
                 beltConveyorReference,
+                guardmanReference,
                 hammerReference,
                 scoreReference
             };
@@ -45,6 +48,7 @@ namespace Main.Eventer
                 new TimeCounter(timeCountReference, SMain.TimeLimit),
                 new PlayerSquatter(new(cameraReference), SMain.CameraProperty),
                 new BeltConveyorMover(beltConveyorReference, SMain.BeltConvyorProperty),
+                new GuardmanWalker(guardmanReference, SMain.GuardmanProperty),
                 new HammerMover(hammerReference, SMain.HammerProperty),
                 new ScoreShower(scoreReference)
             };

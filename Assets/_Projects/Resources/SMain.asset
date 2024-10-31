@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303283fbc91641b47bd5c8f6421cb66a, type: 3}
   m_Name: SMain
   m_EditorClassIdentifier: 
-  timeLimit: 5
+  timeLimit: 90
   cameraProperty:
     duration: 0.2
     y: {x: -1.55, y: -3.5}
     rx: {x: 7, y: -10}
   sunRotateOffset: 10
+  hitDur: 3
   beltConvyorProperty:
     duration: 50
   hammerProperty:
@@ -28,3 +29,25 @@ MonoBehaviour:
     duration: 0.2
     interval: 0.1
     ease: 13
+  guardmanProperty:
+    dur: 5
+    faintProb: 50
+    doorSEulerY: 0
+    doorLEulerY: 15
+    doorEEulerY: 140
+    doorLittleOpenDur: 0.2
+    doorLittleOpenEase: 1
+    doorOpenDur: 0.5
+    doorOpenEase: 1
+    doorCloseDur: 0.3
+    doorCloseEase: 1
+    standZ: -1.06
+    walkSz: -6.6
+    walkEz: -2.6
+    walkDur: 3
+    walkEase: 1
+    durBeforeStandBeyondDoor: 1
+    durBeforeDoorLittleOpen: 0.5
+    durBeforeDoorOpen: 1.5
+    durAfterDoorOpened: 2
+    durAfterDoorClosed: 1
