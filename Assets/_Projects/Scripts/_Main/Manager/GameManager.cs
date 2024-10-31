@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using General;
 using Interface;
 using Main.Data;
+using SO;
 using UnityEngine;
 
 namespace Main.Manager
@@ -37,13 +38,25 @@ namespace Main.Manager
             RecentPressedColor = new();
 
             Countdown(destroyCancellationToken).Forget();
+            CheckFound(destroyCancellationToken).Forget();
         }
 
-        private async UniTask Countdown(CancellationToken ct)
+        private async UniTaskVoid Countdown(CancellationToken ct)
         {
             GameState.IsPaused = true;
             await AnnounceImageReference.CountDown(ct);
             GameState.IsPaused = false;
+        }
+
+        private async UniTaskVoid CheckFound(CancellationToken ct)
+        {
+            while (true)
+            {
+                await UniTask.WaitUntil(() => !State.IsSquatting && State.IsLooking, cancellationToken: ct);
+                State.IsBeingHitted = true;
+                await SMain.Entity.HitDur.SecWait(ct);
+                State.IsBeingHitted = false;
+            }
         }
 
         public void OnUpdate() { }
@@ -68,6 +81,7 @@ namespace Main.Manager
         internal State() { }
 
         internal bool IsSquatting { get; set; } = false;
+        internal bool IsLooking { get; set; } = false;
         internal bool IsBeingHitted { get; set; } = false;
         internal bool IsGameEnded { get; set; } = false;
     }

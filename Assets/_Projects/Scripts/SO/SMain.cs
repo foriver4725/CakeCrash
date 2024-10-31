@@ -19,6 +19,10 @@ namespace SO
         private float sunRotateOffset;
         internal float SunRotateOffset => sunRotateOffset;
 
+        [SerializeField, Range(0.5f, 10.0f), Header("警備員に見つかった際の拘束秒数")]
+        private float hitDur;
+        internal float HitDur => hitDur;
+
         [SerializeField, Header("ベルトコンベア 関連")]
         private BeltConveyorProperty beltConvyorProperty;
         internal BeltConveyorProperty BeltConvyorProperty => beltConvyorProperty;
@@ -26,5 +30,9 @@ namespace SO
         [SerializeField, Header("ハンマー 関連")]
         private HammerProperty hammerProperty;
         internal HammerProperty HammerProperty => hammerProperty;
+
+        [SerializeField, Header("ガードマン 関連")]
+        private GuardmanProperty guardmanProperty;
+        internal GuardmanProperty GuardmanProperty => guardmanProperty;
     }
 }

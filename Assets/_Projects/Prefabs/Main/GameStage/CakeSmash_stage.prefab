@@ -9513,6 +9513,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guardman_Stand
       objectReference: {fileID: 0}
+    - target: {fileID: 388203639696910812, guid: dcf816732e0b743b3ae411535146acf2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1020344092633445222, guid: dcf816732e0b743b3ae411535146acf2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10108,12 +10113,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0328d5f92013145bfb36a08b62f0d956,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.57
+      value: -1.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0328d5f92013145bfb36a08b62f0d956,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.53
+      value: -6.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0328d5f92013145bfb36a08b62f0d956,
         type: 3}

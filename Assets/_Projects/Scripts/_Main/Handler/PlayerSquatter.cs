@@ -6,6 +6,7 @@ using Main.Manager;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
+using System.Data.Common;
 
 namespace Main.Handler
 {
@@ -46,20 +47,11 @@ namespace Main.Handler
         {
             while (true)
             {
-                await UniTask.WhenAll(
-                    UniTask.WaitUntil(() => isSquattable, cancellationToken: ct),
-                    UniTask.WaitUntil(() => isDown, cancellationToken: ct)
-                );
-
+                await UniTask.WaitUntil(() => isSquattable && isDown, cancellationToken: ct);
                 state.IsSquatting = true;
                 NewlyMoveDown();
 
-                await UniTask.WhenAll(
-                    UniTask.WaitUntil(() => isSquattable, cancellationToken: ct),
-                    UniTask.WaitUntil(() => isUp, cancellationToken: ct),
-                    UniTask.WaitUntil(() => !state.IsGameEnded && !state.IsBeingHitted, cancellationToken: ct)
-                );
-
+                await UniTask.WaitUntil(() => isUp, cancellationToken: ct);
                 state.IsSquatting = false;
                 NewlyMoveUp();
             }
